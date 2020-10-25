@@ -1,0 +1,3 @@
+---
+# tasks file for set-hostname
+- import_tasks: set-hostname.yml

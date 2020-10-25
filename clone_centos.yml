@@ -1,0 +1,6 @@
+---
+- name: clone golden centos image
+  hosts: master
+  become: yes
+  roles:
+    - clone-centos

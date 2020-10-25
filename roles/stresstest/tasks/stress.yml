@@ -1,0 +1,5 @@
+---
+- name: run stresstest
+  command: stress -c 1 -t 1m
+  async: 2592000               # 60*60 – 1 hour
+  poll: 0

@@ -1,0 +1,17 @@
+---
+- name: Check if bridge exists
+  stat:
+    path: /etc/sysconfig/network-scripts/ifcfg-bridge0
+  register: stat_result
+
+- name: delete old Network scripts
+  file:
+    path: "/etc/sysconfig/network-scripts/"
+    regexp: "*"
+    state: absent
+  notify: 
+    - scriptfolder
+    - devscript
+    - bridgescript
+    - nmrestart
+  when: stat_result.stat.exists == false

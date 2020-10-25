@@ -1,0 +1,1 @@
+"{{ imagedir }}{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"(rw,sync,no_all_squash,root_squash)

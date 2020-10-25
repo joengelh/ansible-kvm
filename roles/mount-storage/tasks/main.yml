@@ -1,0 +1,3 @@
+---
+# tasks file for mount-storage
+- include_tasks: mount-storage.yml

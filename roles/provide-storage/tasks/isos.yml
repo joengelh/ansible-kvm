@@ -1,0 +1,40 @@
+---
+- name: Check if centos-8-minimal exists
+  stat: path="{{ isodir }}centos8.iso"
+  register: cent_8_min
+
+- name: download centos-8-minimal.iso if not exist
+  get_url:
+    url: http://ftp.rz.uni-frankfurt.de/pub/mirrors/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
+    dest: "{{ isodir }}centos8.iso"
+  when: not cent_8_min.stat.exists
+
+- name: Check if centos-7-minimal exists
+  stat: path="{{ isodir }}centos7.0.iso"
+  register: cent_7_min
+
+- name: download centos 7 minimal iso if not exist
+  get_url:
+    url: http://ftp.rz.uni-frankfurt.de/pub/mirrors/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso
+    dest: "{{ isodir }}centos7.0.iso"
+  when: not cent_7_min.stat.exists
+
+- name: Check if ubu18 exists
+  stat: path="{{ isodir }}ubuntu18.04.iso"
+  register: ubu_18_server
+
+- name: download ubuntu server 18 lts if not exist
+  get_url:
+    url: http://old-releases.ubuntu.com/releases/18.04.1/ubuntu-18.04-live-server-amd64.iso
+    dest: "{{ isodir }}ubuntu18.04.iso"
+  when: not ubu_18_server.stat.exists
+
+- name: Check if ubu 20 desktop exists
+  stat: path="{{ isodir }}ubuntu19.10.iso"
+  register: ubu_20_desktop
+
+- name: download ubuntu 20 lts desktop iso
+  get_url:
+    url: https://releases.ubuntu.com/20.04/ubuntu-20.04.1-desktop-amd64.iso
+    dest: "{{ isodir }}ubuntu19.10.iso"
+  when: not ubu_20_desktop.stat.exists

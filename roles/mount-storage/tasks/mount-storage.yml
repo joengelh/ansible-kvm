@@ -1,0 +1,17 @@
+---
+- name: include vars from provide storage role
+  include_vars: /home/master/ansible-kvm/roles/provide-storage/vars/main.yml
+
+- name: install dependencies for nfs client systems
+  dnf:
+    name: 
+      - nfs-utils
+      - nfs4-acl-tools
+    state: latest
+
+- name: mount nfsshare
+  mount:
+    fstype: nfs
+    name: "{{ shareddir }}"
+    src: "192.168.2.113:{{ shareddir }}"
+    state: mounted

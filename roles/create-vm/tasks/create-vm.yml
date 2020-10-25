@@ -1,0 +1,22 @@
+---
+- name: include vars from provide storage role
+  include_vars: /home/master/ansible-kvm/roles/provide-storage/vars/main.yml
+
+- name: include vars from clone-centos role
+  include_vars: /home/master/ansible-kvm/roles/clone-centos/vars/main.yml
+
+- name: create new virtual machine
+  command: >
+           virt-install 
+           --network default
+           --name "{{ vmname }}"
+           --os-variant="{{ osvar }}" 
+           --disk "{{ livedir }}{{ vmname }}.qcow2",format=qcow2,size="{{ vsize }}"
+           --ram="{{ vram }}"
+           --cdrom="{{ isodir }}{{ osvar }}.iso"
+           --vcpus="{{ vcpu }}"
+           --autostart
+           --graphics vnc
+           --noautoconsole
+  async: 10
+  poll: 0  

@@ -1,0 +1,6 @@
+---
+- name: set hostname like inventory and run stresstest
+  hosts: R
+  become: yes
+  roles:
+    - stresstest

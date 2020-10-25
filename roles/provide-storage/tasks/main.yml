@@ -1,0 +1,4 @@
+---
+# tasks file for share-storage
+- import_tasks: provide-disk.yml
+- import_tasks: isos.yml

@@ -1,0 +1,54 @@
+---
+- name: wake workers
+  hosts: rootmanagement
+  become: yes
+  roles:
+    - wake-workers
+
+- name: add ansible user to all machines
+  hosts: rootmachines
+  become: yes
+  roles:
+    - add-user
+
+- name: set hostname like inventoryname
+  hosts: machines
+  become: yes
+  roles:
+    - set-hostname
+
+- name: deploy cockpit on all machines and add bridge
+  hosts: machines
+  become: yes
+  roles:
+    - bridge-cockpit-libvirt
+
+- name: create and share master attached storage, download cloud images and isos
+  hosts: master
+  become: yes
+  roles:
+    - provide-storage
+
+- name: mount storage on all slaves
+  hosts: slaves
+  become: yes
+  roles:
+    - mount-storage
+
+- name: update all machines
+  hosts: machines
+  become: yes
+  roles:
+    - update-centos-8
+
+- name: put slaves to sleep
+  hosts: slaves
+  become: yes
+  roles:
+    - sleep-workers
+
+- name: deploy existing vms
+  hosts: master
+  become: yes
+  roles:  
+    - deploy-vms

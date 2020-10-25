@@ -1,0 +1,9 @@
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+NAME="Wired connection 1"
+DEVICE=enp0s25
+ONBOOT=yes
+BRIDGE=bridge0
