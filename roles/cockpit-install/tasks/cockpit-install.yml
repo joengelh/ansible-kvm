@@ -1,0 +1,31 @@
+---
+- name: place config file for cockpit, disabling timout
+  template:
+    src: cockpit.conf
+    dest: /etc/cockpit/cockpit.conf
+
+- name: install the latest version of cockpit
+  dnf:
+    name:
+      - cockpit
+      - cockpit-machines
+      - cockpit-dashboard
+    state: latest
+
+- name: Start service cockpit, if not started
+  service:
+    name: cockpit.socket
+    state: started
+
+- name: enable service cockpit and ensure it is not masked
+  systemd:
+    name: cockpit.socket
+    enabled: yes
+    masked: no
+
+- name: add cockpit to firewalld, restart if changed
+  firewalld:
+    service: cockpit
+    permanent: yes
+    state: enabled
+  notify: firewalld restart

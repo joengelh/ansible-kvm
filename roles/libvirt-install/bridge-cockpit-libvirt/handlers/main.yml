@@ -1,0 +1,22 @@
+---
+- name: scriptfolder
+  file:
+    path: "/etc/sysconfig/network-scripts/"
+    state: directory
+    owner: root
+    group: root
+
+- name: place network bridges cript
+  template:
+    src: "ethernet_{{ ansible_os_family }}.j2"
+    dest: "{{ net_path }}/ifcfg-{{ item.device }}"
+    owner: root
+    group: root
+    mode: '0644'
+  loop: "{{ network_ether_interfaces }}"
+
+- name: nmrestart
+  service:
+    name: NetworkManager
+    state: restarted
+

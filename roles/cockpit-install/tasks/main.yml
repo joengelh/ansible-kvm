@@ -1,0 +1,5 @@
+---
+# tasks file for cockpit
+- import_tasks: cockpit.yml
+- import_tasks: add-bridge.yml
+- import_tasks: libvirt.yml
