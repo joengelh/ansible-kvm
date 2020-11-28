@@ -1,10 +1,10 @@
 # Ansible-KVM
 
-Requirements:
-## slaves:
+## Requirements:
+### slaves:
   - install centos 8 minimal install
 
-## master
+### master
   - install centos 8 workstation
   - download anydesk
 
