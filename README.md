@@ -1,18 +1,14 @@
 # Ansible-KVM
 
-KVM Automation with Ansible and Python
-
 Requirements:
-slaves:
+## slaves:
   - install centos 8 minimal install
 
-master
+## master
   - install centos 8 workstation
   - download anydesk
 
-su
 echo mypassword | anydesk --set-password
-echo "[daemon]
 WaylandEnable=false" > /etc/gdm3/custom.conf
 reboot
 
@@ -21,18 +17,16 @@ share key with gitlab
 git clone git@gitlab.jhamacher.de:Engelhardt/ansible-kvm.git
 run primary setup script
 
-#________________________________________________________________
-Roles:
-hypervisor
+---
+## Roles:
+### hypervisor
 - add-user
 - add-bridge
 - install-pkg
 - install-kvm
 - install-cockpit
-slave
+### slave
 - mount storage
-master
+### master
 - share storage
 - load isos
-woke
-- wake workers
