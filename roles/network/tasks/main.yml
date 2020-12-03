@@ -4,6 +4,7 @@
     src: "ethernet_{{ ansible_os_family }}.j2"
     dest: "{{ net_path }}/ifcfg-{{ item.device }}"
   loop: "{{ network_ether_interfaces }}"
+  notify: network-restart
   when: 
     - network_ether_interfaces is defined
   register: ether_result
@@ -13,20 +14,11 @@
     src: "bridge_{{ ansible_os_family }}.j2"
     dest: "{{ net_path }}/ifcfg-{{ item.device }}"
   loop: "{{ network_bridge_interfaces }}"
+  notify: network-restart
   when: network_bridge_interfaces is defined
   register: bridge_result
-
-- name: Enable the "network" service
-  service:
-    name: network
-    enabled: true
 
 - name: Enable the "NetworkManager" service
   service:
     name: NetworkManager
     enabled: true
-
-- name: notify handlers if templates were placed
-  notify:
-  - network-restart
-  when: bridge_result.changed or ether_result.changed

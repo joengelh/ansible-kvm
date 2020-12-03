@@ -1,7 +1,16 @@
+#jinja2: lstrip_blocks: "True", trim_blocks: "True"
 {% if item.bootproto == 'static' %}
 DEVICE={{ item.device }}
 TYPE=Bridge
 BOOTPROTO=none
+    {% if item.mtu is defined %}
+MTU={{ item.mtu }}
+    {% endif -%}
+
+    {% if item.stp is defined %}
+STP={{ item.stp }}
+    {% endif -%}
+
     {% if item.address is defined %}
 IPADDR={{ item.address }}
     {% endif -%}
@@ -26,6 +35,15 @@ DNS{{ loop.index }}={{ dns_nameserver }}
 DEVICE={{ item.device }}
 TYPE=bridge
 BOOTPROTO=dhcp
+    {% if item.mtu is defined %}
+MTU={{ item.mtu }}
+    {% endif -%}
+
+    {% if item.stp is defined %}
+STP={{ item.stp }}
+    {% endif %}
+{% endif -%}
+
 {% if item.onboot is defined %}
 ONBOOT={{ item.onboot | bool | ternary("yes", "no") }}
 {% endif -%}
@@ -33,3 +51,31 @@ ONBOOT={{ item.onboot | bool | ternary("yes", "no") }}
 {% if item.nm_controlled is defined %}
 NM_CONTROLLED={{ item.nm_controlled }}
 {% endif -%}
+
+{% if item.ipv6_address is defined %}
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_FORWARDING="yes"
+IPV6_PEERDNS="yes"
+IPV6_PEERROUTES="yes"
+IPV6_PRIVACY="no"
+IPV6ADDR={{ item.ipv6_address }}
+{% endif -%}
+
+{% if item.ipv6_gateway is defined %}
+IPV6_DEFAULTGW="{{ item.ipv6_gateway }}"
+{% endif -%}
+
+{% if item.defroute is defined %}
+DEFROUTE={{ item.defroute | bool | ternary("yes", "no") }}
+{% endif -%}
+
+{% if item.mtu is defined %}
+MTU={{ item.mtu }}
+{% endif -%}
+
+{% if item.firewalld_zone is defined %}
+ZONE={{ item.firewalld_zone }}
+{% endif %}

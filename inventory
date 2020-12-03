@@ -1,0 +1,2 @@
+rootkvm ansible_user=root ansible_host=192.168.2.104
+kvm ansible_user=root ansible_host=192.168.2.104
