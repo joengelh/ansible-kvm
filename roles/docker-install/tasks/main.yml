@@ -1,5 +1,0 @@
----
-- include_tasks: packages.yml
-- include_tasks: docker-ce.yml
-- include_tasks: docker-compose.yml
-- include_tasks: start-docker.yml

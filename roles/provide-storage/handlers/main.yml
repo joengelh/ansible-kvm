@@ -1,9 +1,0 @@
----
-# handlers file for share-storage
-- name: restart-nfs
-  systemd:
-    name: nfs-server.service
-    state: reloaded
-
-- name: exportfsa
-  command: exportfs -a

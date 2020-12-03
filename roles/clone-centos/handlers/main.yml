@@ -1,3 +1,0 @@
----
-- name: counter
-  command: Rscript /home/master/ansible-kvm/scripts/R/counter.R

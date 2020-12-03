@@ -1,2 +1,0 @@
-- name: alternative-python
-  command: alternatives --set python /usr/bin/python3

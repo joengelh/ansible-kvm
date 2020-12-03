@@ -1,0 +1,17 @@
+---
+- name: add ansible user and place ssh public key
+  hosts: rootk8s
+  roles:
+  - user-add
+
+- name: set hostname
+  hosts: k8s
+  become: yes
+  roles: 
+    - hostname-set
+
+- name: put k8s servers to sleep
+  hosts: k8s
+  become: yes
+  roles: 
+    - shutdown

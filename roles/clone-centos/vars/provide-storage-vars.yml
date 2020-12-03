@@ -1,6 +1,0 @@
----
-shareddir: /mnt/shared-storage
-goldendir: /mnt/shared-storage/golden-images/
-isodir: /mnt/shared-storage/isos/
-snapdir: /mnt/shared-storage/snapshots/
-livedir: /mnt/shared-storage/live-systems/

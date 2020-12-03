@@ -1,6 +1,0 @@
----
-- name: create custom new VM from ISO
-  hosts: master
-  become: yes
-  roles:
-    - clone-centos

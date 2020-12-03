@@ -1,0 +1,9 @@
+---
+network_ether_interfaces:
+
+  - device: ens192
+    bootproto: static
+    address: 10.14.94.40
+    netmask:  255.255.255.224
+    gateway: 10.14.94.33
+
