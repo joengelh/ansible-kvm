@@ -6,10 +6,12 @@
 
 - name: set hostname
   hosts: kvm
+  become: yes
   roles: 
     - hostname-set
 
 - name: place network scripts
   hosts: kvm
+  become: yes
   roles: 
     - network
