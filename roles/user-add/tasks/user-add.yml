@@ -14,13 +14,19 @@
 
 - name: Add sudoers users to wheel group
   user: 
-    name: ansible 
+    name: "{{ item }}" 
     group: wheel 
     append: yes 
     state: present 
     createhome: yes
+  loop:
+  - ansible
+  - libvirt
 
 - name: Set up authorized keys for the deployer user
   authorized_key: 
-    user: ansible 
+    user: "{{ item }}"
     key: "{{ key }}"
+  loop: 
+  - ansible
+  - libvirt
