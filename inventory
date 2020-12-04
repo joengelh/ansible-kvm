@@ -2,7 +2,7 @@
 rootkvm1 ansible_user=root ansible_host=192.168.2.5
 
 [kvm]
-kvm1 ansible_user=root ansible_host=192.168.5
+kvm1 ansible_user=root ansible_host=192.168.2.5
 
 [rootk8s]
 

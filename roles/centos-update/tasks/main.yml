@@ -1,2 +1,2 @@
 ---
-- include_tasks: update-all.yml
+- include_tasks: centos-update.yml

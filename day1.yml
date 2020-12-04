@@ -1,0 +1,19 @@
+---
+- name: update centos
+  hosts: kvm
+  become: yes
+  roles: 
+    - centos-update
+
+- name: install and configure cockpit
+  hosts: kvm
+  become: yes
+  roles:
+  - cockpit-install
+
+- name: install libvirt
+  hosts: kvm
+  become: yes
+  roles: 
+    - libvirt-install
+

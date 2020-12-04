@@ -14,8 +14,3 @@
 # Execute configuration change
 - name: Execute Network Restart
   shell: bash /etc/sysconfig/restart.sh | true
-
-- name: Cleanup Network Restart script
-  file:
-    path: /etc/sysconfig/restart.sh
-    state: absent
