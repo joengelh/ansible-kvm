@@ -14,3 +14,4 @@
 # Execute configuration change
 - name: Execute Network Restart
   shell: bash /etc/sysconfig/restart.sh | true
+  ignore_errors: 'yes'
