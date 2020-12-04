@@ -1,5 +1,0 @@
----
-- name: add ansible user and ssh key
-  hosts: rootvm
-  roles: 
-  - user-add
