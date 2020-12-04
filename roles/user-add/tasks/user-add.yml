@@ -21,7 +21,6 @@
     createhome: yes
   loop:
   - ansible
-  - libvirt
 
 - name: Set up authorized keys for the deployer user
   authorized_key: 
@@ -29,4 +28,3 @@
     key: "{{ key }}"
   loop: 
   - ansible
-  - libvirt
