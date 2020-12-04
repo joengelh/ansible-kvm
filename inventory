@@ -7,3 +7,8 @@ kvm1 ansible_user=root ansible_host=192.168.2.5
 [rootk8s]
 
 [k82]
+
+[vm]
+
+[rootvm]
+centos-golden-8 ansible_user=root ansible_host=192.168.2.101
