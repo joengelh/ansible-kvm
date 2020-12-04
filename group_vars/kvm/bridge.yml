@@ -1,6 +1,6 @@
 ---
 network_bridge_interfaces:
-  - device: enp0s25
+  - device: br0
     bootproto: static
     address: 192.168.2.5
     netmask:  255.255.255.0
