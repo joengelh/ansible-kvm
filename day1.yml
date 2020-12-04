@@ -1,19 +1,12 @@
 ---
 - name: update centos
-  hosts: kvm
+  hosts: k8s
   become: yes
   roles: 
-    - centos-update
+  - centos-update
 
-- name: install and configure cockpit
-  hosts: kvm
+- name: shut down
+  hosts: k8s
   become: yes
   roles:
-  - cockpit-install
-
-- name: install libvirt
-  hosts: kvm
-  become: yes
-  roles: 
-    - libvirt-install
-
+  - shutdown
