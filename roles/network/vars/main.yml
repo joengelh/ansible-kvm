@@ -1,2 +1,3 @@
 ---
-net_path: "/etc/sysconfig/network-scripts"
+env:
+  RUNLEVEL: 1

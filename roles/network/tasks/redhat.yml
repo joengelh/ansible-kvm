@@ -1,0 +1,90 @@
+---
+- name: Write configuration files for rhel route configuration with vlan
+  template:
+    src: "route_{{ ansible_os_family }}.j2"
+    dest: "{{ net_path }}/route-{{ item.device }}"
+  loop: "{{ network_vlan_interfaces }}"
+  when: network_vlan_interfaces is defined and item.route is defined
+  tags:
+    - route
+
+#old method without multiple routes per interface
+#- name: Write configuration files for rhel route configuration
+#  template:
+#    src: "route_{{ ansible_os_family }}.j2"
+#    dest: "{{ net_path }}/route-{{ item.1.device }}"
+#  with_indexed_items: "{{ network_ether_interfaces }}"
+#  when: 
+#    - network_ether_interfaces 
+#    - item.1.route is defined
+#    - item.1.route.default is defined 
+#    - not item.1.route.default 
+#
+#  tags:
+#    - route
+    
+- name: Write configuration files for rhel route configuration
+  template:
+    src: "route_{{ ansible_os_family }}.j2"
+    dest: "{{ net_path }}/route-{{ item.device }}"
+  #with_subelements: 
+  with_items: 
+    -  "{{ network_ether_interfaces }}"
+   # #- route
+  when: 
+    - network_ether_interfaces 
+    - item.route.0.network is defined 
+    - not item.route.0.default 
+  tags:
+    - route
+
+- name: Write configuration files for rhel route configuration
+  template:
+    src: "route6_{{ ansible_os_family }}.j2"
+    dest: "{{ net_path }}/route6-{{ item.device }}"
+  #with_subelements: 
+  with_items: 
+    -  "{{ network_ether_interfaces }}"
+   # #- route
+  when: 
+    - network_ether_interfaces 
+    - item.route6.0.network is defined 
+    - not item.route6.0.default 
+  tags:
+    - route
+
+- name: Write configuration files for route configuration
+  template:
+    src: "route_{{ ansible_os_family }}.j2"
+    dest: "{{ net_path }}/route-{{ item.device }}"
+  loop: "{{ network_bond_interfaces }}"
+#  when: network_bond_interfaces is defined and item.route is defined
+  when: 
+    - network_ether_interfaces 
+    - item.route.0.network is defined 
+    - not item.route.0.default 
+  tags:
+    - route
+
+- name: Write configuration files for rhel route configuration
+  template:
+    src: "route_{{ ansible_os_family }}.j2"
+    dest: "{{ net_path }}/route-{{ item.device }}"
+  loop: "{{ network_bridge_interfaces }}"
+  when: network_bridge_interfaces is defined and item.route is defined
+  tags:
+    - route
+
+- name: Cleanup gateway dev that does not set to the one we want
+  lineinfile:
+    dest: /etc/sysconfig/network
+    regexp: "^GATEWAYDEV=(?!{{ gateway_dev }})"
+    state: absent
+  when: gateway_dev is defined
+
+
+- name: Explicitly set the gateway device
+  lineinfile:
+    dest: /etc/sysconfig/network
+    line: "GATEWAYDEV={{ gateway_dev }}"
+  when: gateway_dev is defined

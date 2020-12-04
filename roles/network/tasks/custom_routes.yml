@@ -1,0 +1,143 @@
+---
+- debug:
+    msg: "n2_interface_address: {{ n2_interface_address }}"
+  failed_when: n2_interface_address is undefined
+  tags: 
+    - test
+    - oumrouteadd
+
+# @todo improvement: # add to network role and check for custom routes
+- debug:
+    var: custom_routes
+  tags: 
+    - test
+    - oumrouteadd
+
+- name: get oum interface with n2_interface_address variable
+  set_fact:
+    oum_interface="{{ item }}"
+  when:  (hostvars[inventory_hostname]['ansible_{{item}}']['ipv4']['address'] is defined) and  (hostvars[inventory_hostname]['ansible_{{item}}']['ipv4']['address'] == n2_interface_address)
+  with_items:
+    - "{{ ansible_interfaces }}"
+  tags: 
+    - test
+    - oumrouteadd
+
+- name: print result
+  debug:
+    msg: "O&M Interface: {{ oum_interface }}"
+  when: oum_interface is defined
+  tags: 
+    - test
+    - oumrouteadd
+
+- name: set fact for o&m router based on ip 
+  set_fact:
+    oum_router="{{  hostvars[inventory_hostname]['ansible_'~oum_interface]['ipv4']['network']  | ipmath(1) }}"
+  #when: hostvars[inventory_hostname]['ansible_{{item}}']['ipv4']['address'] == n2_interface_address
+  #with_items:
+  #  - "{{ ansible_interfaces }}"
+  when: oum_interface is defined
+  tags: 
+    - test
+    - oumrouteadd
+
+- name: show gateway from interface with network + ipmath(1)
+  debug:
+    #msg: "O&M Gateway: {{ hostvars[inventory_hostname]['ansible_{{ oum_interface }}']['ipv4']['network'] }}"
+    #msg: "O&M Gateway: {{  hostvars[inventory_hostname]['ansible_ens224']['ipv4']['network'] }}"
+    msg:  "O&M Gateway: {{  oum_router }}"
+  when: oum_router is defined
+  tags: 
+    - test
+    - oumrouteadd
+
+# @todo improvement: # Mehr als oum
+- name: add o&m routes
+  shell: "/sbin/ip route add {{ item.dest }} via {{ oum_router }} dev {{ oum_interface }}"
+  when: "item.gateway == 'oumgateway' and item.interface == 'ouminterface'"
+  loop: "{{ custom_routes }}"
+  register: oum_routes_result
+  failed_when:  (oum_routes_result.rc  != 0 ) and (oum_routes_result.rc  != 2 )
+  changed_when: oum_routes_result.rc  == 0
+  tags: oumrouteadd
+- debug: 
+    var: oum_routes_result
+  tags: oumrouteadd
+
+#@todo bug: # klappt noch nicht 
+- name: custom_routes_plain
+  debug: 
+    msg: "{{ item }}"
+  loop: "{{ custom_routes_plain }}"
+  tags:
+  - custom_routes_plain
+
+- name: Add not o&m routes
+  shell: "/sbin/ip route add {{ item }}"
+  register: non_oum_routes_result
+  failed_when:  (non_oum_routes_result.rc  != 0 ) and (non_oum_routes_result.rc  != 2 )
+  changed_when: non_oum_routes_result.rc  == 0
+  when: custom_routes_plain is defined
+  loop: "{{ custom_routes_plain }}"
+  tags:
+  - custom_routes_plain
+  
+- debug:
+    var: non_oum_routes_result
+  tags:
+  - custom_routes_plain
+
+# @todo bug: # should point to /etc/sysconfig/network/route-device
+- name: copy route template to destination /etc/sysconfig/network-scripts/route-"ouminterface"
+  blockinfile:
+      dest: "/etc/sysconfig/network-scripts/route-{{ oum_interface }}"
+      content: "{{ lookup('template', './custom_routes.j2') }}"
+      state: present
+      create: yes
+      marker: "# {mark} custom oumrules {{ item.name }}"
+  when: "item.gateway == 'oumgateway' and item.interface == 'ouminterface'"
+  loop: "{{ custom_routes }}"
+
+# @todo bug: # do it for em interfaces also 
+- debug:
+    msg: "{{ item | regex_search('(ens.*)') }}"
+  loop: "{{ custom_routes_plain | regex_search('(ens.*)') }}"
+  tags:
+  - custom_routes_plain
+
+
+
+- name: test
+  set_fact:
+    #cr_dict: "{{ cr_dict|default({}) | combine({item: custom_routes_plain | regex_search('(*.ens224*)') |list }) }}"
+    #cr_dict: "{{ custom_routes_plain | map('regex_search',item) | list }}"
+    cr_dict: "{{  cr_dict|default({}) | combine({item: custom_routes_plain | select('match',item) }) }}"
+  loop: "{{ ansible_interfaces }}"
+  tags:
+  - custom_routes_plain
+#  - testjonas
+
+- debug:
+    msg: "Key={{ item.0.key }} value={{ item.1 }}"
+    #msg: "{{ item }}: {{ custom_routes_plain | select('match',item) | list }}"
+  loop: "{{ custom_routes_plain2 | dict2items | subelements('value') }}"
+  tags:
+  - custom_routes_plain
+  - testjonas
+ 
+
+# @todo bug: # should point to /etc/sysconfig/network/route-device
+- name: copy route template to destination /etc/sysconfig/network-scripts/route-"ouminterface"
+  blockinfile:
+      dest: "/etc/sysconfig/network-scripts/route-{{ item.0.key }}"
+      content: "{{ lookup('template', './custom_routes_plain.j2') }}"
+      state: present
+      create: yes
+      marker: "# {mark} custom routes"
+  loop: "{{ custom_routes_plain2 | dict2items | subelements('value') }}"
+  tags:
+  - custom_routes_plain
+  - testjonas
+
+

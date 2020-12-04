@@ -1,6 +1,0 @@
----
-- name: network-restart
-  service:
-    name: NetworkManager
-    state: restarted
-

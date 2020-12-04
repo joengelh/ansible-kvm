@@ -15,9 +15,3 @@
   become: yes
   roles: 
     - network
-
-- name: shutdown server
-  hosts: kvm 
-  become: yes
-  roles:
-    - shutdown
