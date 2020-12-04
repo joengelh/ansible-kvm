@@ -5,11 +5,11 @@
   - user-add
 
 - name: set hostname
-  hosts: rootkvm
+  hosts: kvm
   roles: 
     - hostname-set
 
 - name: place network scripts
-  hosts: rootkvm
+  hosts: kvm
   roles: 
     - network
