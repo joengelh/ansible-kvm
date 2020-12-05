@@ -1,22 +1,22 @@
 ---
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
-    mac: 90:1B:0E:85:78:33
+    mac: 90-1B-0E-85-78-33
   when: mac_adress == "slave1"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
-    mac: 90:1B:0E:85:78:20
+    mac: 90-1B-0E-85-78-20
   when: mac_adress == "slave2"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
-    mac: 90:1B:0E:84:DA:48
+    mac: 90-1B-0E-84-DA-48
   when: mac_adress == "slave3"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
-    mac: 90:1B:0E:84:DA:5D
+    mac: 90-1B-0E-84-DA-5D
   when: mac_adress == "slave4"
 
 - name: Send a magic WOL packet to selected machine
