@@ -2,34 +2,34 @@
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-85-78-33
-  when: mac_adress == "slave1"
+  when: mac_adress == "slave1" or mac_adress == "all"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-85-78-20
-  when: mac_adress == "slave2"
+  when: mac_adress == "slave2" or mac_adress == "all"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-84-DA-48
-  when: mac_adress == "slave3"
+  when: mac_adress == "slave3" or mac_adress == "all"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-84-DA-5D
-  when: mac_adress == "slave4"
+  when: mac_adress == "slave4" or mac_adress == "all"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-89-C4-44  
-  when: mac_adress == "window1"
+  when: mac_adress == "window1" or mac_adress == "all"
     
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-85-41-AC
-  when: mac_adress == "window2"
+  when: mac_adress == "window2" or mac_adress == "all"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-84-DA-53
-  when: mac_adress == "window3"
+  when: mac_adress == "window3" or mac_adress == "all"
