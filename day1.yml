@@ -1,12 +1,7 @@
 ---
-- name: update centos
-  hosts: k8s
-  become: yes
-  roles: 
-  - centos-update
-
-- name: shut down
-  hosts: k8s
+- name: install required packaged and update software
+  hosts: kvm
   become: yes
   roles:
-  - shutdown
+  - yum-update
+  - yum-install

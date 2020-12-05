@@ -1,0 +1,10 @@
+---
+- name: install required packaged
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - epel-release 
+    - wget
+    - htop
+
