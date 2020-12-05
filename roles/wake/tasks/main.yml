@@ -1,3 +1,2 @@
 ---
-# tasks file for wake-workers
-- import_tasks: wake.yml
+- import_tasks: wake-machine.yml
