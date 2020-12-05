@@ -12,14 +12,14 @@
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-89-C4-44  
-  when: "'window1' in {{ mac_adress }}"
+  when: "'window1' or 'windows' in {{ mac_adress }}"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-85-41-AC
-  when: "'window2' in {{ mac_adress }}"
+  when: "'window2' or 'windows' in {{ mac_adress }}"
 
 - name: Send a magic WOL packet to selected machine
   wakeonlan:
     mac: 90-1B-0E-84-DA-53
-  when: "'window3' in {{ mac_adress }}"
+  when: "'window3' or 'windows' in {{ mac_adress }}"
