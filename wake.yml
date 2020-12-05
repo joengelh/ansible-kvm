@@ -1,0 +1,5 @@
+---
+- name: install required packaged and update software
+  hosts: localhost
+  roles:
+  - wake
