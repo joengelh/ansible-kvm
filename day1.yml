@@ -5,8 +5,9 @@
   roles:
   - yum-update
 
-- name: install and enable cockpit and all its dependencies
+- name: install and enable kvm, cockpit and all its dependencies
   hosts: kvm
   become: yes
   roles:
+  - libvirt-install
   - cockpit-install
