@@ -9,12 +9,25 @@
     src: cockpit.conf
     dest: /etc/cockpit/cockpit.conf
 
-- name: install the latest version of cockpit
+- name: install yum modules
+  yum:
+    name: 
+      - epel-release
+      - wget
+      - htop
+      - vim
+    state: latest
+
+- name: install the latest version of cockpit and additional modules
   dnf:
     name:
       - cockpit
       - cockpit-machines
       - cockpit-dashboard
+      - cockpit-podman 
+      - cockpit-networkmanager 
+      - cockpit-packagekit 
+      - cockpit-storaged
     state: latest
 
 - name: Start service cockpit, if not started
