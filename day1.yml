@@ -1,7 +1,12 @@
 ---
-- name: install required packaged and update software
+- name: update yum packaged
   hosts: kvm
   become: yes
   roles:
   - yum-update
-  - yum-install
+
+- name: install and enable cockpit and all its dependencies
+  hosts: kvm
+  become: yes
+  roles:
+  - cockpit-install
