@@ -48,6 +48,5 @@ ifup {{ item.item.1 }}
 {% if bridge_result is defined and 'results' in bridge_result %}{% for item in bridge_result.results %}
 ifup {{ item.item.device }}
 {% endfor %}{% endif %}
-{% if true %}
-rm -f -- "$0"
-{% endif %}
+
+
