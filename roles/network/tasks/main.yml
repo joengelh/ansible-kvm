@@ -2,9 +2,10 @@
 - name: Add the OS specific varibles
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Include specific tasks for the RedHat family
-  include: redhat.yml
-  when: ansible_os_family == 'RedHat'
+- name: make sure directory for network scripts exists
+  file:
+    dest: "{{ net_path }}"
+    state: directory
 
 - name: Create the network configuration file for ethernet interfaces
   template:
