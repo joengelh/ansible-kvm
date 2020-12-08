@@ -1,15 +1,10 @@
 ---
-- name: make sure directory for restart script exists
-  file:
-    dest: /etc/sysconfi
-    state: directory
-
 - name: Create a restart script
   template:
     src: restartscript.j2
-    dest: /etc/sysconfig/restart.sh
+    dest: /tmp/restart.sh
     mode: 0755
 
 - name: Execute Network Restart
-  shell: bash /etc/sysconfig/restart.sh | true
+  shell: /tmp/restart.sh | true
   ignore_errors: 'yes'
