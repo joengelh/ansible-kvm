@@ -7,6 +7,7 @@
   when: network_check_packages
   tags:
     - packages
+  ignore_errors: yes
 
 
 #- name: disable v6 autoconf

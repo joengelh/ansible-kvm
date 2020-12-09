@@ -1,4 +1,7 @@
 #jinja2: lstrip_blocks: "True", trim_blocks: "True"
+{% if item.bridge is defined %}
+BRIDGE={{ item.bridge }}
+{% endif -%}}
 {% if item.bootproto == 'static' %}
 DEVICE={{ item.device }}
 BOOTPROTO=static

@@ -109,6 +109,7 @@
     - bridge_ports
   when: network_bridge_interfaces is defined
   register: bridge_port_result
+  ignore_errors: yes
 
 # Restart Network Interfaces (deconfigurate & reconfigurate interfaces)
 - include: restartscript.yml
