@@ -8,7 +8,7 @@ network_ether_interfaces:
   - device: enp0s20u7
     onboot: yes
     bootproto: static
-    address: 192.168.2.10
+    address: 192.168.2.13
     netmask:  255.255.255.0
     gateway: 192.168.2.1
     dns_nameservers:
