@@ -1,0 +1,5 @@
+---
+- name: wake hosts
+  hosts: localhost
+  roles:
+  - wake
