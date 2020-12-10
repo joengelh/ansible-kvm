@@ -14,7 +14,6 @@
     name: 
       - epel-release
       - wget
-      - htop
       - vim
     state: latest
 
