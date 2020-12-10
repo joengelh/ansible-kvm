@@ -1,5 +1,0 @@
----
-- name: wake hosts
-  hosts: master
-  roles:
-  - wake
