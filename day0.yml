@@ -1,17 +1,17 @@
 ---
 - name: add ansible user and place ssh public key
-  hosts: rootkvm
+  hosts: rootcloud1
   roles:
   - user-add
 
 - name: set hostname
-  hosts: kvm
+  hosts: cloud1
   become: yes
   roles: 
   - hostname-set
 
 - name: place network scripts
-  hosts: kvm
+  hosts: cloud1
   become: yes
   roles: 
   - network

@@ -9,3 +9,14 @@ dev ansible_user=ansible ansible_host=192.168.2.111
 
 [rootvm]
 dev ansible_user=root ansible_host=192.168.2.111
+
+[rootcloud]
+rootcloud1 ansible_user=root ansible_host=192.168.2.6
+rootcloud2 ansible_user=root ansible_host=192.168.2.7
+rootcloud3 ansible_user=root ansible_host=192.168.2.8
+
+[cloud]
+cloud1 ansible_user=ansible ansible_host=192.168.2.6
+cloud1 ansible_user=ansible ansible_host=192.168.2.7
+cloud1 ansible_user=ansible ansible_host=192.168.2.8
+
