@@ -1,0 +1,26 @@
+---
+- name: install nfs-utils
+  yum:
+    name: nfs-utils
+    state: latest
+
+- name: start and enable nfs server service
+  service:
+    name: nfs-server
+    state: started
+    enabled: yes
+
+- name: export directory
+  lineinfile:
+    path: /etc/exports
+    line: "/mnt/Datastore1/images *(rw,sync,no_all_squash,root_squash)"
+  register: export_result
+
+- name: create directory
+  file:
+    path: /mnt/Datastore1
+    state: directory
+
+- name: execute export
+  command: sudo exportfs -arv
+  when: export_result.changed

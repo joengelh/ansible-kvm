@@ -1,0 +1,6 @@
+---
+- name: provide nfs share
+  become: yes
+  hosts: kvm
+  roles:
+  - nfs-provide
