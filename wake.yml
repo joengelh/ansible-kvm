@@ -1,5 +1,5 @@
 ---
 - name: wake hosts
-  hosts: kvm
+  hosts: kvm1
   roles:
   - wake
