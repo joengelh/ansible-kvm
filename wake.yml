@@ -1,5 +1,5 @@
 ---
 - name: wake hosts
-  hosts: localhost
+  hosts: master
   roles:
   - wake
