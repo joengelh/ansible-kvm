@@ -1,0 +1,10 @@
+---
+- name: allow nfs to pass firewall
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+  loop:
+    - nfs
+    - rpc-bind
+    - mountd
