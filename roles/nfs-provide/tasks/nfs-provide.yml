@@ -13,7 +13,7 @@
 - name: export directory
   lineinfile:
     path: /etc/exports
-    line: "/mnt/Datastore1/images *(rw,sync,no_all_squash,root_squash)"
+    line: "/mnt/Datastore1/images *(rw,sync)"
   register: export_result
 
 - name: create directory
