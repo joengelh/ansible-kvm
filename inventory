@@ -4,11 +4,11 @@ rootkvm1 ansible_user=root ansible_host=192.168.2.104
 [kvm]
 kvm1 ansible_user=root ansible_host=192.168.2.104
 
-[vm]
-dev ansible_user=ansible ansible_host=192.168.2.111
+[dev]
+ansible ansible_user=ansible ansible_host=192.168.2.117
 
-[rootvm]
-dev ansible_user=root ansible_host=192.168.2.111
+[rootdev]
+rootansible ansible_user=root ansible_host=192.168.2.117
 
 [rootcloud]
 rootcloud1 ansible_user=root ansible_host=192.168.2.6

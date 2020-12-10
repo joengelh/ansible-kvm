@@ -1,25 +1,25 @@
 ---
 - name: update yum packaged
-  hosts: kvm
+  hosts: dev
   become: yes
   roles:
   - yum-update
 
 - name: install and enable kvm, cockpit and all its dependencies
-  hosts: kvm
+  hosts: dev
   become: yes
   roles:
   - libvirt-install
   - cockpit-install
 
 - name: provide nfs storage
-  hosts: kvm 
+  hosts: dev 
   become: yes
   roles:
   - nfs-provide
 
 - name: shut down host
-  hosts: kvm
+  hosts: dev
   become: yes
   roles:
   - shutdown

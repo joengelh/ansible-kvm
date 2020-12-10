@@ -1,17 +1,17 @@
 ---
 - name: add ansible user and place ssh public key
-  hosts: rootcloud1
+  hosts: rootdev
   roles:
   - user-add
 
 - name: set hostname
-  hosts: cloud1
+  hosts: dev
   become: yes
   roles: 
   - hostname-set
 
 - name: place network scripts
-  hosts: cloud1
+  hosts: dev
   become: yes
   roles: 
   - network

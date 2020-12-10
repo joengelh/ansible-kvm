@@ -14,6 +14,7 @@
     name: 
       - epel-release
       - wget
+      - open-vm-tools
       - vim
     state: latest
 
