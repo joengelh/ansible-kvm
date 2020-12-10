@@ -13,13 +13,16 @@
 - name: export directory
   lineinfile:
     path: /etc/exports
-    line: "/mnt/Datastore1/images *(rw,sync)"
+    line: "/mnt/Datastore1 *(rw,sync,no_root_squash)"
   register: export_result
 
 - name: create directory
   file:
     path: /mnt/Datastore1
     state: directory
+    group: nobody
+    owner: nobody
+    mode: 1777
 
 - name: execute export
   command: sudo exportfs -arv
