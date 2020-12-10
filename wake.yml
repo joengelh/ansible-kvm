@@ -1,5 +1,5 @@
 ---
 - name: wake hosts
-  hosts: localhost
+  hosts: kvm
   roles:
   - wake
