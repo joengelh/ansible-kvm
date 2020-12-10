@@ -8,10 +8,10 @@
   hosts: kvm
   become: yes
   roles: 
-    - hostname-set
+  - hostname-set
 
 - name: place network scripts
   hosts: kvm
   become: yes
   roles: 
-  #    - network
+  - network
