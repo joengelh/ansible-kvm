@@ -11,15 +11,3 @@
   roles:
   - libvirt-install
   - cockpit-install
-
-- name: provide nfs storage
-  hosts: dev 
-  become: yes
-  roles:
-  - nfs-provide
-
-- name: shut down host
-  hosts: dev
-  become: yes
-  roles:
-  - shutdown
