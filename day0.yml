@@ -22,14 +22,21 @@
   roles:
   - yum-update
 
-- name: install and enable kvm, cockpit and all its dependencies
+- name: install and enable kvm
   hosts: all
   become: yes
   roles:
   - libvirt-install
-  - cockpit-install
   tags:
   - kvm
+
+- name: install KVM and all of its dependencies
+  hosts: all
+  become: yes
+  roles: cockpit-install
+  tags:
+  - kvm
+  - nfs
 
 - name: provide nfs storage
   hosts: all
