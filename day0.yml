@@ -1,17 +1,46 @@
 ---
 - name: add ansible user and place ssh public key
-  hosts: rootdev
+  hosts: rootall
   roles:
   - user-add
 
 - name: set hostname
-  hosts: dev
+  hosts: all
   become: yes
   roles: 
   - hostname-set
 
 - name: place network scripts
-  hosts: dev
+  hosts: all
   become: yes
   roles: 
   - network
+
+- name: update yum packages
+  hosts: all
+  become: yes
+  roles:
+  - yum-update
+
+- name: install and enable kvm, cockpit and all its dependencies
+  hosts: all
+  become: yes
+  roles:
+  - libvirt-install
+  - cockpit-install
+  tags:
+  - kvm
+
+- name: provide nfs storage
+  hosts: all
+  become: yes
+  roles:
+  - nfs-provide
+  tags:
+  - nfs
+
+- name: shut down host
+  hosts: all
+  become: yes
+  roles:
+  - shutdown
