@@ -19,12 +19,11 @@
     state: latest
 
 - name: install the latest version of cockpit and additional modules
-  dnf:
+  yum:
     name:
       - cockpit
       - cockpit-dashboard
       - cockpit-machines
-      - cockpit-podman 
       - cockpit-networkmanager 
       - cockpit-packagekit 
       - cockpit-storaged

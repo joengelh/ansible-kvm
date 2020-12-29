@@ -1,4 +1,9 @@
 ---
+- name: firewalld_restart
+  service:
+    name: firewalld
+    state: restarted
+
 - name: scriptfolder
   file:
     path: "/etc/sysconfig/network-scripts/"
