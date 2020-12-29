@@ -1,4 +1,10 @@
 ---
+- name: set hostname like ansible inventory name
+  hosts: total
+  become: yes
+  roles:
+  - hostname-set
+
 - name: update yum packages
   hosts: total
   become: yes

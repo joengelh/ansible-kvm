@@ -4,12 +4,7 @@
   roles:
   - user-add
 
-- name: set hostname
-  hosts: roottotal
-  roles: 
-  - hostname-set
-
 - name: place network scripts
-  become: yes
+  hosts: roottotal
   roles: 
   - network
