@@ -1,0 +1,31 @@
+---
+- name: update yum packages
+  hosts: total
+  become: yes
+  roles:
+  - yum-update
+
+- name: install and enable kvm
+  hosts: total
+  become: yes
+  roles:
+  - libvirt-install
+  tags:
+  - kvm
+
+- name: install KVM and all of its dependencies
+  hosts: total
+  become: yes
+  roles: 
+  - cockpit-install
+  tags:
+  - kvm
+  - nfs
+
+- name: provide nfs storage
+  hosts: total
+  become: yes
+  roles:
+  - nfs-provide
+  tags:
+  - nfs
