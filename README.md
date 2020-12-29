@@ -8,9 +8,9 @@
   - install centos 8 workstation
   - download anydesk
 
-echo mypassword | anydesk --set-password
-WaylandEnable=false" > /etc/gdm3/custom.conf
-reboot
+* echo mypassword | anydesk --set-password
+* WaylandEnable=false" > /etc/gdm3/custom.conf
+* reboot
 
 ssh-keygen
 share key with gitlab
