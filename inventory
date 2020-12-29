@@ -1,5 +1,5 @@
 [roottotal]
-rootnfs ansible_host=192.168.2.101
+rootnfs ansible_host=192.168.2.11
 
 [total]
 nfs ansible_host=192.168.2.11

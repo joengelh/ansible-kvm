@@ -28,5 +28,5 @@
   when: file_details.stat.exists
 
 - name: reboot machine
-  command: shutdown -r 3
+  command: shutdown -r 1
   when: file_details.stat.exists

@@ -13,7 +13,7 @@ IPADDR={{ item.address }}
 NETMASK={{ item.netmask }}
     {% endif -%}
 
-    {% if item.gateway is defined and ( item.route.0.default is defined and item.route.0.default is sameas true) %}
+    {% if item.gateway is defined %}
 GATEWAY={{ item.gateway }}
     {% endif -%}
 
