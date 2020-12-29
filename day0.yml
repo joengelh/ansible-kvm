@@ -5,13 +5,13 @@
   - user-add
 
 - name: set hostname
-  hosts: total
+  hosts: roottotal
   become: yes
   roles: 
   - hostname-set
 
 - name: place network scripts
-  hosts: total
+  hosts: roottotal
   become: yes
   roles: 
   - network

@@ -1,6 +1,6 @@
 [roottotal]
-rootdev7 ansible_host=192.168.2.105
-rootdevstream ansible_host=192.168.2.106
+rootdev7 ansible_host=192.168.2.13
+rootdevstream ansible_host=192.168.2.14
 
 [total]
 dev7 ansible_host=192.168.2.13
