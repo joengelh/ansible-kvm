@@ -1,5 +1,7 @@
-[rootall]
-rootnfs ansible_user=root ansible_host=192.168.2.104
+[roottotal]
+rootdev7 ansible_host=192.168.2.105
+rootdevstream ansible_host=192.168.2.106
 
-[all]
-nfs ansible_user=ansible ansible_host=
+[total]
+dev7 ansible_host=192.168.2.13
+devstream ansible_host=192.168.2.14
