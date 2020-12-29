@@ -2,4 +2,4 @@
 rootnfs ansible_host=192.168.2.101
 
 [total]
-nfs ansible_host=192.168.2.14
+nfs ansible_host=192.168.2.11

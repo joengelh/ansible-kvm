@@ -6,12 +6,10 @@
 
 - name: set hostname
   hosts: roottotal
-  become: yes
   roles: 
   - hostname-set
 
 - name: place network scripts
-  hosts: roottotal
   become: yes
   roles: 
   - network
