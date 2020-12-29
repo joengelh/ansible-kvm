@@ -32,12 +32,12 @@
 
 - name: Start service cockpit, if not started
   service:
-    name: cockpit
+    name: cockpit.socket
     state: started
 
 - name: enable service cockpit and ensure it is not masked
   systemd:
-    name: cockpit
+    name: cockpit.socket
     enabled: yes
     masked: no
 
