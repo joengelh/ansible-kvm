@@ -29,4 +29,4 @@
 
 - name: reboot machine
   command: shutdown -r 3
-
+  when: file_details.stat.exists
