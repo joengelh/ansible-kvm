@@ -22,8 +22,8 @@
   dnf:
     name:
       - cockpit
-      - cockpit-machines
       - cockpit-dashboard
+      - cockpit-machines
       - cockpit-podman 
       - cockpit-networkmanager 
       - cockpit-packagekit 
@@ -32,12 +32,12 @@
 
 - name: Start service cockpit, if not started
   service:
-    name: cockpit.socket
+    name: cockpit
     state: started
 
 - name: enable service cockpit and ensure it is not masked
   systemd:
-    name: cockpit.socket
+    name: cockpit
     enabled: yes
     masked: no
 

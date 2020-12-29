@@ -13,7 +13,7 @@
   tags:
   - kvm
 
-- name: install KVM and all of its dependencies
+- name: install cockpit and all of its dependencies
   hosts: total
   become: yes
   roles: 
