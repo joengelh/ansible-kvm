@@ -1,0 +1,2 @@
+---
+- include_tasks: anydesk-install.yml

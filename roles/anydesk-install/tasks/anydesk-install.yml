@@ -1,0 +1,32 @@
+---
+- name: install anydesk package
+  yum:
+    name: https://download.anydesk.com/linux/anydesk-6.0.1-1.el8.x86_64.rpm
+    state: present
+  register: install_result
+
+- name: enable anydesk
+  service:
+    name: anydesk
+    enabled: yes
+    state: started
+
+- name: set standard password for anydesk
+  command: "echo mypassword | anydesk --set-password"
+  when: install_result.changed
+
+- name: check if gdm3 is used
+  stat:
+    path: /etc/gdm3
+  register: file_details
+
+- name: disable wayland
+  lineinfile:
+    dest: /etc/gdm3/custom.conf
+    line: "WaylandEnable=false"
+    state: present
+  when: file_details.stat.exists
+
+- name: reboot machine
+  command: shutdown -r 3
+

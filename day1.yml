@@ -35,3 +35,11 @@
   - nfs-provide
   tags:
   - nfs
+
+- name: install anydesk
+  hosts: total
+  become: yes
+  roles:
+  - anydesk-install
+  tags:
+  - desktop

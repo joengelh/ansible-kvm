@@ -29,6 +29,5 @@
   register: bridge_result
 
 - name: reboot machine if network changed
-  command: sudo reboot
-  ignore_errors: 'yes'
+  command: shutdown -r 3
   when: vlan_result.changed or bridge_result.changed or ether_result.changed
