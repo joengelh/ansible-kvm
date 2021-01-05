@@ -43,3 +43,10 @@
   - anydesk-install
   tags:
   - desktop
+
+- name: create software mirror
+  hosts: total
+  become: yes
+  roles: 
+  - repo-provide
+

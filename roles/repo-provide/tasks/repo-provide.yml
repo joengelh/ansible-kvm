@@ -16,8 +16,8 @@
     src: "{{ item }}"
     dest: /localrepo
   loop: 
-  - /var/packages
-  - /var/licenses
+  - /var/packages/
+  - /var/licenses/
   register: copyresult
 
 - name: run createrepo
@@ -25,9 +25,9 @@
   when: copyresult.changed
 
 - name: place httpd config file
-  tempalte:
-    dest: /etc/httpd/config/httpd.config
-    src: httpd.config
+  template:
+    dest: /etc/httpd/conf/httpd.conf
+    src: httpd.conf
   register: templateresult
 
 - name: restart service if httpd tempalte changed

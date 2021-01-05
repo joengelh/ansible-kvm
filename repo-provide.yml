@@ -1,0 +1,6 @@
+---
+- name: provide repo
+  hosts: total
+  become: yes
+  roles:
+  - repo-provide
