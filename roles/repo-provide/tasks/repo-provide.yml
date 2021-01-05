@@ -1,0 +1,44 @@
+---
+- name: install required packages
+  yum:
+    name: 
+    - createrepo
+    - httpd
+    state: latest
+
+- name: create directory for the repositories
+  file:
+    path: /localrepo
+    state: directory
+
+- name: copy files to directory
+  copy:
+    src: "{{ item }}"
+    dest: /localrepo
+  loop: 
+  - /var/packages
+  - /var/licenses
+  register: copyresult
+
+- name: run createrepo
+  command: "createrepo /localrepo"
+  when: copyresult.changed
+
+- name: place httpd config file
+  tempalte:
+    dest: /etc/httpd/config/httpd.config
+    src: httpd.config
+  register: templateresult
+
+- name: restart service if httpd tempalte changed
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+  when: templateresult.changed
+
+- name: remove apache welcome page
+  file:
+    dest: yum.repos.d/
+    state: absent
+
