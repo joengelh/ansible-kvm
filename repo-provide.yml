@@ -1,6 +1,12 @@
 ---
 - name: provide repo
-  hosts: total
+  hosts: localhost
   become: yes
   roles:
   - repo-provide
+
+- name: add mirror
+  hosts: total
+  become: yes
+  roles:
+  - mirror-add
