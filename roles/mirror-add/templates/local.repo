@@ -1,0 +1,5 @@
+[centos7]
+name=centos7
+baseurl=http://192.168.2.18/
+enabled=0
+gpgcheck=0
