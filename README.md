@@ -30,3 +30,4 @@ run primary setup script
 ### master
 - share storage
 - load isos
+- mirror-add, inspired by https://www.fosslinux.com/6749/setup-local-yum-server-on-centos-7-guide.htm
