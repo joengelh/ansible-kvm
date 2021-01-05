@@ -1,12 +1,12 @@
 ---
 - name: provide repo
-  hosts: localhost
+  hosts: dev7
   become: yes
   roles:
   - repo-provide
 
 - name: add mirror
-  hosts: total
+  hosts: nfs
   become: yes
   roles:
   - mirror-add
