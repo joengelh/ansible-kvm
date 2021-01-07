@@ -1,10 +1,12 @@
 ---
 - name: add ansible user and place ssh public key
-  hosts: roottotal
+  hosts: localhost #roottotal
+  become: yes
   roles:
   - user-add
 
 - name: place network scripts
-  hosts: roottotal
+  hosts: localhost #roottotal
+  become: yes
   roles: 
   - network
