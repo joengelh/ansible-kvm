@@ -1,0 +1,14 @@
+---
+- name: create directory for the repositories
+  file:
+    path: /localrepo
+    state: directory
+
+- name: copy files to directory
+  copy:
+    src: "{{ item }}"
+    dest: /localrepo
+  loop: 
+  - /var/packages/
+  - /var/licenses/
+  register: copyresult

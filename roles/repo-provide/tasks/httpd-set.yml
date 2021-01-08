@@ -16,4 +16,3 @@
   file:
     dest: yum.repos.d/
     state: absent
-
