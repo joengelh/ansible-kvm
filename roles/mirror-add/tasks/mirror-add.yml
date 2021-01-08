@@ -1,5 +1,7 @@
 ---
-- name: place template for local mirror
-  template:
-    src: local.repo 
-    dest: /etc/yum.repos.d/
+- name: add local mirror to repo
+  yum_repository:
+    name: local
+    description: local mirror for faster install
+    baseurl: http://{{ masterAdress }}/
+
