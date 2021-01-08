@@ -1,0 +1,10 @@
+---
+- name: make directory for licenses
+  file:
+    path: /var/licenses
+    state: directory
+   
+- name: download licenses from http server
+  get_url:
+    url: http://{{ masterAdress }}/licenses/  
+    dest: /var/licenses  

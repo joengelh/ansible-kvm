@@ -1,14 +1,22 @@
 ---
 - name: create directory for the repositories
   file:
-    path: /localrepo
+    path: "{{ item }}"
     state: directory
+    recurse: yes
+  loop:
+  - /localrepo/licenses
 
-- name: copy files to directory
+- name: copy rpm files to directory
   copy:
     src: "{{ item }}"
     dest: /localrepo
   loop: 
   - /var/packages/
-  - /var/licenses/
-  register: copyresult
+
+- name: copy license files to directory
+  copy:
+    src: "{{ item }}"
+    dest: /localrepo/licenses
+  loop:
+  - /var/licenses
