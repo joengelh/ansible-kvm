@@ -3,9 +3,3 @@
   template:
     src: local.repo 
     dest: /etc/yum.repos.d/
-  register: templateResult
-
-- name: update repository
-  command: yum update -y
-  when: templateResult.changed
-  
