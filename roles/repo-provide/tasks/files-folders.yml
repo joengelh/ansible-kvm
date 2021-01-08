@@ -5,7 +5,7 @@
     state: directory
     recurse: yes
   loop:
-  - /localrepo/licenses
+  - /localrepo/
 
 - name: copy rpm files to directory
   copy:
@@ -13,10 +13,11 @@
     dest: /localrepo
   loop: 
   - /var/packages/
+  register: copyResult 
 
-- name: copy license files to directory
+- name: copy license folder to directory
   copy:
     src: "{{ item }}"
-    dest: /localrepo/licenses
+    dest: /localrepo/licenses/
   loop:
-  - /var/licenses
+  - /var/licenses/
