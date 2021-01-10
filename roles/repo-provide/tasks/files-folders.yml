@@ -7,10 +7,16 @@
   loop:
   - /localrepo/
 
+- name: find all .tar.gz files to be unpacked
+  find:
+    paths: /localrepo/
+    patterns: '*.tar.gz'
+  register: gzFiles
+
 - name: unpack rpm files to directory
   unarchive:
     copy: yes
-    src: "{{ item }}"*.tar.gz
+    src: "/localrepo/"
     dest: /localrepo
   loop: 
   - /var/packages/
