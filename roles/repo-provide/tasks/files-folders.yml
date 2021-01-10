@@ -16,7 +16,6 @@
 - name: unpack rpm files to directory
   unarchive:
     copy: yes
-    src: "/localrepo/"
     src: "{{ item }}"
     dest: /localrepo
   loop: 
