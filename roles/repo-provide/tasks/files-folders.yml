@@ -10,7 +10,7 @@
 - name: unpack rpm files to directory
   unarchive:
     copy: yes
-    src: "{{ item }}"*.tar.gz
+    src: "{{ item }}*.tar.gz"
     dest: /localrepo
   loop: 
   - /var/packages/
