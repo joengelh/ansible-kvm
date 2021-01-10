@@ -9,21 +9,18 @@
 
 - name: find all .tar.gz files to be unpacked
   find:
-    paths: /localrepo/
+    paths: /var/packages/
     patterns: '*.tar.gz'
   register: gzFiles
 
 - name: unpack rpm files to directory
   unarchive:
     copy: yes
-<<<<<<< HEAD
     src: "/localrepo/"
-=======
-    src: "{{ item }}*.tar.gz"
->>>>>>> f31ae1acc13571886e3afb730745f338ceceafa2
+    src: "{{ item }}"
     dest: /localrepo
   loop: 
-  - /var/packages/
+  - gzFiles
   register: copyResult 
 
 - name: copy license folder to directory
