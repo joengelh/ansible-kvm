@@ -8,4 +8,4 @@
 
 - name: run createrepo
   command: "createrepo /localrepo"
-  when: copyResult.changed
+  when: copyResult.changed or unpackResult.changed

@@ -45,7 +45,7 @@
   - desktop
 
 - name: create software mirror
-  hosts: localhost
+  hosts: dev7
   become: yes
   roles: 
   - repo-provide
