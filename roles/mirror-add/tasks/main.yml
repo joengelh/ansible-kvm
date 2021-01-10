@@ -1,2 +1,5 @@
 ---
 - include_tasks: mirror-add.yml
+- name: tell me your ip too
+  debug:
+    msg: ansible_default_ipv4.address
