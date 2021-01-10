@@ -2,7 +2,3 @@
 - include_tasks: files-folders.yml
 - include_tasks: createrepo.yml
 - include_tasks: httpd-set.yml
-
-- name: tell me your ip
-  debug:
-    msg: "{{ hostvars['ansibleMaster']['ansible_default_ipv4']['address'] }}"

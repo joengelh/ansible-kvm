@@ -18,7 +18,7 @@
 - name: copy rpm files to directory localrepo
   copy:
     src: "{{ item }}"
-    dest: /localrrepo
+    dest: /localrepo
   with_fileglob: /var/packages/*.rpm
   register: copyResult
 
