@@ -20,7 +20,7 @@
     dest: /var/files
   when: uriTest.status < 400
 
-- name: Transfer file from delegated source to this server
+- name: Transfer locenses from delegated source to this server
   synchronize:
     src: /var/licenses
     dest: /var/licenses
