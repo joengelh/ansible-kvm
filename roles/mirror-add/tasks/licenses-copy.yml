@@ -9,14 +9,14 @@
 
 - name: check if files are to be downloaded
   uri:
-    url: "http://{{ masterAdress }}/files/"
+    url: "https://{{ masterAdress }}/files/"
     method: HEAD
   register: uriTest
   failed_when: no
 
 - name: download files from http server
   get_url:
-    url: "http://{{ masterAdress }}/files/"
+    url: "https://{{ masterAdress }}/files/"
     dest: /var/files
   when: uriTest.status < 400
 
