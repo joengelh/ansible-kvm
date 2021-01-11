@@ -1,10 +1,27 @@
 ---
-- name: make directory for licenses
+- name: make directory for licenses and files
   file:
-    path: /var/licenses
+    path: "{{ item }}"
     state: directory
-   
-- name: download licenses from http server
+  loop:
+  - /var/licenses
+  - /var/files
+
+- name: check if files are to be downloaded
+  uri:
+    url: "http://{{ masterAdress }}/files/"
+    method: HEAD
+  register: uriTest
+  failed_when: no
+
+- name: download files from http server
   get_url:
-    url: http://{{ masterAdress }}/licenses/  
-    dest: /var/licenses  
+    url: "http://{{ masterAdress }}/files/"
+    dest: /var/files
+  when: uriTest.status < 400
+
+- name: Transfer file from delegated source to this server
+  synchronize:
+    src: /var/licenses
+    dest: /var/licenses
+  delegate_to: ansibleMaster

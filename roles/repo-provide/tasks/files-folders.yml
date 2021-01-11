@@ -22,9 +22,9 @@
   with_fileglob: /var/packages/*.rpm
   register: copyResult
 
-- name: copy license folder to directory
+- name: copy files folder to directory
   copy:
     src: "{{ item }}"
-    dest: /localrepo/licenses/
+    dest: /localrepo/files/
   loop:
-  - /var/licenses/
+  - /var/files/
