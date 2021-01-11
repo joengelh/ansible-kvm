@@ -11,12 +11,16 @@
   args:
     chdir: /etc/pki/tls/certs
 
-
 - name: place httpd config file
   template:
     dest: /etc/httpd/conf/httpd.conf
     src: httpd.conf
   register: templateresult
+
+- name: remove apache welcome page
+  file:
+    dest: /etc/httpd/conf.d/welcome.conf
+    state: absent
 
 - name: restart service if httpd tempalte changed
   service:
@@ -24,8 +28,3 @@
     state: restarted
     enabled: yes
   when: templateresult.changed
-
-- name: remove apache welcome page
-  file:
-    dest: yum.repos.d/
-    state: absent

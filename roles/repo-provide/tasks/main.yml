@@ -3,3 +3,4 @@
 - include_tasks: package-install.yml
 - include_tasks: createrepo.yml
 - include_tasks: httpd-set.yml
+- include_tasks: firewall-manage.yml
