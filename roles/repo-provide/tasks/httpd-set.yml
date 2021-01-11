@@ -4,19 +4,17 @@
     path: /etc/pki/tls/certs/localhost.crt
   register: cert_exists
 
-- name: create self-signed OpenSSL-certificate csr
-  command: openssl req -new -newkey rsa:4096 -nodes \
-    -keyout localhost.key -out localhost.csr \
-    -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=pcloud.local"
+- name: create self-signed OpenSSL-certificate csr & key
+  command: openssl req -new -newkey rsa:4096 -nodes -keyout localhost.key -out localhost.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=pcloud.local"
   args:
     chdir: /etc/pki/tls/private
-  when: cert_exists.stat.exists
+  when: not cert_exists.stat.exists
 
 - name: create self-signed OpenSSL-certificate
   command: openssl x509 -req -days 365 -in /etc/pki/tls/private/localhost.csr -signkey /etc/pki/tls/private/localhost.key -out localhost.crt
   args:
     chdir: /etc/pki/tls/certs
-  when: cert_exists.stat.exists
+  when: not cert_exists.stat.exists
 
 - name: place httpd config file
   template:
