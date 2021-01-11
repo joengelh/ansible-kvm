@@ -3,5 +3,5 @@
   yum_repository:
     name: local
     description: local mirror for faster install
-    baseurl: https://{{ masterAdress }}/
+    baseurl: https://{{ masterAddress }}/
 

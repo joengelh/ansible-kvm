@@ -5,7 +5,7 @@
   register: cert_exists
 
 - name: create self-signed OpenSSL-certificate csr & key
-  command: openssl req -new -newkey rsa:4096 -nodes -keyout localhost.key -out localhost.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=pcloud.local"
+  command: openssl req -new -newkey rsa:4096 -nodes -keyout localhost.key -out localhost.csr -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN={{ masterAddress }}"
   args:
     chdir: /etc/pki/tls/private
   when: not cert_exists.stat.exists
