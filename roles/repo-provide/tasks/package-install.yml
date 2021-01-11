@@ -1,0 +1,9 @@
+---
+- name: install packages required for the role
+  yum:
+    name: 
+    - createrepo
+    - httpd
+    - mod_ssl
+    - openssl
+    state: latest

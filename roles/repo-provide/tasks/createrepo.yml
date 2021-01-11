@@ -1,11 +1,4 @@
 ---
-- name: install required packages
-  yum:
-    name: 
-    - createrepo
-    - httpd
-    state: latest
-
 - name: run createrepo
   command: "createrepo /localrepo"
   when: copyResult.changed or unpackResult.changed

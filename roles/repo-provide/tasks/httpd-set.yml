@@ -1,4 +1,20 @@
 ---
+- name: create self-signed OpenSSL-certificate key
+  command: openssl genrsa -out localhost.key 2048
+  args:
+    chdir: /etc/pki/tls/private
+ 
+ name: create self-signed OpenSSL-certificate csr
+  command: openssl req -new -key /etc/pki/tls/private/localhost.key -out localhost.csr
+  args:
+    chdir: /etc/pki/tls/private
+
+ name: create self-signed OpenSSL-certificate
+  command: openssl x509 -req -days 365 -in /etc/pki/tls/private/localhost.csr -signkey /etc/pki/tls/private/localhost.key -out localhost.crt
+  args:
+    chdir: /etc/pki/tls/certs
+
+
 - name: place httpd config file
   template:
     dest: /etc/httpd/conf/httpd.conf
