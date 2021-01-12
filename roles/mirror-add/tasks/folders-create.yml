@@ -1,0 +1,9 @@
+---
+- name: create directories required for this role
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  loop:
+  - /var/files
+  - /var/folders

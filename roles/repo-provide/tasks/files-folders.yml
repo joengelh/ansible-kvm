@@ -1,5 +1,5 @@
 ---
-- name: create directories for the OpenSSL certificates
+- name: create directories required for this role
   file:
     path: "{{ item }}"
     state: directory
@@ -7,14 +7,7 @@
   loop:
   - /etc/pki/tls/certs
   - /etc/pki/tls/private
-
-- name: create directory for the repositories
-  file:
-    path: "{{ item }}"
-    state: directory
-    recurse: yes
-  loop:
-  - /localrepo/
+  - /localrepo
 
 - name: unpack rpm files to directory localrepo
   unarchive:
