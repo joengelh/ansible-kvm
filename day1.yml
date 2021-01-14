@@ -20,7 +20,7 @@
   - kvm
 
 - name: install cockpit and all of its dependencies
-  hosts: total
+  hosts: nfs
   become: yes
   roles: 
   - cockpit-install
@@ -29,7 +29,7 @@
   - nfs
 
 - name: provide nfs storage
-  hosts: total
+  hosts: nfs
   become: yes
   roles:
   - nfs-provide

@@ -2,6 +2,6 @@
 - name: enable service cockpit and ensure it is not masked
   systemd:
     name: cockpit.socket
-    started: yes
+    state: started
     enabled: yes
     masked: no
