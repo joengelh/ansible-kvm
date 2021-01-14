@@ -23,18 +23,12 @@
     chdir: "{{ netPath }}"
   when: not cert_exists.stat.exists
 
-- name: download service certificate if exists
-  stat:
-    path: /etc/cockpit/
-  register: cockpitDir
-
 - name: download cockpit certificate to tmp
-  fetch:
+  copy:
     src: "{{ item }}"
-    dest: /tmp/
-    flat: yes
+    dest: "{{ netPath }}"
   with_fileglob: /etc/cockpit/ws-certs.d/*
-  #when: cockpitDir.stat.exists
+  remote_src: yes
 
 - name: download certificate from server to tmp
   fetch:

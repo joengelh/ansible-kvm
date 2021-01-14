@@ -12,23 +12,18 @@
   - yum-update
 
 - name: install and enable kvm
-  hosts: total
+  hosts: kvm
   become: yes
   roles:
   - libvirt-install
-  tags:
-  - kvm
 
 - name: install cockpit and all of its dependencies
   hosts: nfs
   become: yes
   roles: 
   - cockpit-install
-  tags:
-  - kvm
-  - nfs
 
-- name: create CA certificate for the host in "{{ netPath }}"
+- name: create CA certificate for the hosts
   hosts: total
   become: yes
   roles:
@@ -39,16 +34,12 @@
   become: yes
   roles:
   - nfs-provide
-  tags:
-  - nfs
 
 - name: install anydesk
-  hosts: total
+  hosts: nfs
   become: yes
   roles:
   - anydesk-install
-  tags:
-  - desktop
 
 - name: create software mirror
   hosts: ansibleMaster
