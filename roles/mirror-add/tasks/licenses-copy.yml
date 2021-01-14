@@ -1,5 +1,0 @@
----
-- name: copy license files to remote servers
-  copy:
-    src: /var/licenses
-    dest: /var/licenses
