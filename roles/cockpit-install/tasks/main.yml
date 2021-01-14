@@ -1,6 +1,5 @@
 ---
 - import_tasks: cockpit-folders.yml
-- import_tasks: cockpit-certificate.yml
 - import_tasks: cockpit-config.yml
 - import_tasks: cockpit-software.yml
 - import_tasks: cockpit-service.yml

@@ -1,6 +1,0 @@
----
-- name: copy certificate to cockpit config folder
-  copy:
-    src: "{{ netPath }}{{ inventory_hostname }}.crt"
-    dest: /etc/cockpit/ws-certs.d/
-    remote_src: yes
