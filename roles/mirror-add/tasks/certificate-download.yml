@@ -1,9 +1,9 @@
 ---
 - name: download certificate from master server
-  copy:
+  fetch:
     src: "{{ item }}"
     dest: /etc/pki/ca-trust/source/anchors/
-  with_fileblob: "{{ netPath }}*"
+  with_fileglob: "{{ netPath }}*"
   register: certCopy
 
 - name: reload CA certificates
