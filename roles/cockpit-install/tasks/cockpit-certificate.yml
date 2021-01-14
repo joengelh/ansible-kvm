@@ -1,5 +1,5 @@
 ---
 - name: download certificate from master server
   copy:
-    src: /etc/pki/tls/certs/localhost.crt
+    src: "{{ netPath }}{{ inventory_hostname }}.crt"
     dest: /etc/cockpit/ws-certs.d/

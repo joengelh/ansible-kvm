@@ -1,5 +1,5 @@
 ---
-- name: check if certificate is already present
+- name: create hard link for certificate
   stat:
     path: /etc/pki/tls/certs/localhost.crt
   register: cert_exists

@@ -19,6 +19,12 @@
   tags:
   - kvm
 
+- name: create CA certificate for the host in "{{ netPath }}"
+  hosts: total
+  become: yes
+  roles:
+  - certificate-create
+
 - name: install cockpit and all of its dependencies
   hosts: nfs
   become: yes
