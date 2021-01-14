@@ -1,2 +1,7 @@
 ---
-- import_tasks: cockpit-install.yml
+- import_tasks: cockpit-folder.yml
+- import_tasks: cockpit-certificate.yml
+- import_tasks: cockpit-config.yml
+- import_tasks: cockpit-cockpit-software.yml
+- import_tasks: cockpit-service.yml
+- import_tasks: cockpit-firewall.yml

@@ -1,0 +1,20 @@
+---
+- name: install yum modules
+  yum:
+    name: 
+      - epel-release
+      - wget
+      - open-vm-tools
+      - vim
+    state: latest
+
+- name: install the latest version of cockpit and additional modules
+  yum:
+    name:
+      - cockpit
+      - cockpit-dashboard
+      - cockpit-machines
+      - cockpit-networkmanager 
+      - cockpit-packagekit 
+      - cockpit-storaged
+    state: latest

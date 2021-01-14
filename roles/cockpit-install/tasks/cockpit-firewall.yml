@@ -1,0 +1,7 @@
+---
+- name: add cockpit to firewalld, restart if changed
+  firewalld:
+    service: cockpit
+    permanent: yes
+    state: enabled
+  notify: firewalld restart

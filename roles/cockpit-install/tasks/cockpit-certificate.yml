@@ -1,0 +1,5 @@
+---
+- name: download certificate from master server
+  copy:
+    src: /etc/pki/tls/certs/localhost.crt
+    dest: /etc/cockpit/ws-certs.d/
