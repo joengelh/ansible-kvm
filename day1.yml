@@ -62,3 +62,9 @@
   roles:
   - mirror-add
   - yum-update
+
+- name: place CA certificate on server
+  hosts: total
+  become: yes
+  roles:
+  - certificate-upload

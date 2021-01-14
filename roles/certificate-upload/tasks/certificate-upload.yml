@@ -1,0 +1,7 @@
+---
+- name: upload file
+  fetch:
+    src: "{{ item }}"
+    dest: /localrepo/licenses
+  with_fileglob: "{{ netPath }}*"
+  delegate_to: ansibleMaster
