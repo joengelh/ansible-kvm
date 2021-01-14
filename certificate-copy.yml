@@ -1,5 +1,0 @@
----
-- name: place certificate in http server
-  copy:
-    src: /etc/pki/tls/certs/localhost.crt
-    dest: /localrepo/certificates

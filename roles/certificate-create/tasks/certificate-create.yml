@@ -11,9 +11,6 @@
   with_fileglob: "{{ netPath }}{{ inventory_hostname }}.*"
   when: not cert_exists.stat.exists
 
-- name: print ssh connection adress
-  debug: var=hostvars[inventory_hostname].ansible_host
-
 - name: create self-signed OpenSSL-certificate csr & key
   command: openssl req -new -newkey rsa:4096 -nodes -keyout "{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.csr" -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN={{ hostvars[inventory_hostname].ansible_host }}"
   args:
@@ -25,3 +22,9 @@
   args:
     chdir: "{{ netPath }}"
   when: not cert_exists.stat.exists
+
+- name: get certificate from server
+  fetch:
+    src: "{{ netPath }}{{ inventory_hostname }}.crt"
+    dest: "/tmp/{{ inventory_hostname }}.crt"
+    flat: yes
