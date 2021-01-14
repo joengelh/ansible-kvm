@@ -1,7 +1,8 @@
 ---
-- name: add local mirror to repo
+- name: add local mirror to repi
   yum_repository:
     name: local
     description: local mirror for faster install
     baseurl: https://{{ masterAddress }}/
-
+    gpgcheck: no
+    enabled: yes
