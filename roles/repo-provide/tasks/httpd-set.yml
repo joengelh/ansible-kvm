@@ -5,6 +5,12 @@
     src: httpd.conf
   register: templateresult
 
+- name: place ssl conf file
+  template:
+    dest: /etc/httpd/conf.d/
+    src: ssl.conf
+  register: sslresult
+
 - name: remove apache welcome page
   file:
     dest: /etc/httpd/conf.d/welcome.conf
@@ -15,4 +21,4 @@
     name: httpd
     state: restarted
     enabled: yes
-  when: templateresult.changed
+  when: templateresult.changed or sslresult.changed
