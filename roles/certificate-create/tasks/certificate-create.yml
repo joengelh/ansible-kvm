@@ -23,15 +23,13 @@
     chdir: "{{ netPath }}"
   when: not cert_exists.stat.exists
 
-- name: download cockpit certificate to tmp
-  copy:
-    src: "{{ item }}"
-    dest: "{{ netPath }}"
-  with_fileglob: /etc/cockpit/ws-certs.d/*
-  remote_src: yes
-
 - name: download certificate from server to tmp
   fetch:
-    src: "{{ netPath }}{{ inventory_hostname }}.crt"
+    src: "{{ item }}"
     dest: /tmp/
     flat: yes
+  loop: 
+  - "{{ netPath }}{{ inventory_hostname }}.crt"
+  - /etc/cockpit/ws-certs.d/0-self-signed.cert
+  failed_when: no
+

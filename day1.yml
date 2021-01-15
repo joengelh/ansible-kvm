@@ -24,7 +24,7 @@
   - cockpit-install
 
 - name: create CA certificate for the hosts
-  hosts: total
+  hosts: nfs
   become: yes
   roles:
   - certificate-create
@@ -42,7 +42,7 @@
   - anydesk-install
 
 - name: create software mirror
-  hosts: ansibleMaster
+  hosts: dev7
   become: yes
   roles: 
   - repo-provide
