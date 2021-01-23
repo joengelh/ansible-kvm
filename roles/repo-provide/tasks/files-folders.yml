@@ -16,4 +16,5 @@
 
 - name: reposync
   shell: "reposync -g -l -d -m --repoid=centosplus --newest-only --download-metadata --download_path=/var/www/html/repos/"
+  when: dirResult.changed
   notify: createrepo
