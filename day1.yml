@@ -23,8 +23,8 @@
   roles: 
   - cockpit-install
 
-- name: create CA certificate for the hosts
-  hosts: nfs
+- name: create CA certificate on every host
+  hosts: total
   become: yes
   roles:
   - certificate-create

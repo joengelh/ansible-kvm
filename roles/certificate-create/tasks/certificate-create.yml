@@ -1,26 +1,19 @@
 ---
 - name: check if certificate is already present
   stat:
-    path: "{{ netPath }}{{ inventory_hostname }}.crt"
+    path: "{{ certDir }}{{ inventory_hostname }}.crt"
   register: cert_exists
-
-- name: remove eventual remains of old key
-  file: 
-    state: absent
-    path: "{{ item }}"
-  with_fileglob: "{{ netPath }}{{ inventory_hostname }}.*"
-  when: not cert_exists.stat.exists
 
 - name: create self-signed OpenSSL-certificate csr & key
   command: openssl req -new -newkey rsa:4096 -nodes -keyout "{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.csr" -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN={{ hostvars[inventory_hostname].ansible_host }}"
   args:
-    chdir: "{{ netPath }}"
+    chdir: "{{ privateDir }}"
   when: not cert_exists.stat.exists
 
 - name: create self-signed OpenSSL-certificate
-  command: openssl x509 -req -days 3650 -in "{{ inventory_hostname }}.csr" -signkey "{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.crt"
+  command: openssl x509 -req -days 3650 -in "{{ certDir }}{{ inventory_hostname }}.csr" -signkey "{{ certDir }}{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.crt"
   args:
-    chdir: "{{ netPath }}"
+    chdir: "{{ certDirectory }}"
   when: not cert_exists.stat.exists
 
 - name: download certificate from server to tmp
@@ -29,7 +22,5 @@
     dest: /tmp/
     flat: yes
   loop: 
-  - "{{ netPath }}{{ inventory_hostname }}.crt"
-  - /etc/cockpit/ws-certs.d/0-self-signed.cert
-  failed_when: no
+  - "{{ certDir }}{{ inventory_hostname }}.crt"
 

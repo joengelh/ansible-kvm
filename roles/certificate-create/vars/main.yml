@@ -1,0 +1,3 @@
+---
+privateDir: "/etc/ssl/private/"
+certDir: "/etc/ssl/certs/"
