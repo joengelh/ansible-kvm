@@ -5,11 +5,5 @@
     state: restarted
     enabled: yes
 
-- name: httpsFirewalld
-  firewalld:
-    service: https
-    permanent: yes
-    state: enabled
-
 - name: createrepo
   shell: "createrepo {{ htmlDir }}"

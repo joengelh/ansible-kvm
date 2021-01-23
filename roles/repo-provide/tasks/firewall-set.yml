@@ -1,0 +1,11 @@
+---
+- name: set firewall rules
+  firewalld:
+    service: "{{ item.service }}"
+    permanent: yes
+    state: "{{ item.state }}"
+  loop:
+  - { service: "https", state: "enabled" }
+  - { service: "http", state: "disabled" }
+  notify: 
+  - httpdRestart

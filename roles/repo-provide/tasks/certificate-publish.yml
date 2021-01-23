@@ -1,0 +1,13 @@
+---
+- name: find all certificate files from master server
+  find:
+    path: /tmp/
+    patterns: "*.crt"
+  register: findCert
+  delegate_to: localhost
+
+- name: download certificate from master server
+  copy:
+    src: "{{ item.path }}"
+    dest: "{{ htmlDir }}"
+  loop: "{{ findCert.files }}"

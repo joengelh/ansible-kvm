@@ -3,9 +3,6 @@
   template:
     dest: "/etc/httpd/conf.d/ssl.conf"
     src: ssl.conf
-  notify:
-  - httpdRestart
-  - httpsFirewalld
 
 - name: remove apache welcome page
   file:

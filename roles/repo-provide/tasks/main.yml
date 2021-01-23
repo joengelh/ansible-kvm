@@ -2,3 +2,6 @@
 - include_tasks: package-install.yml
 - include_tasks: files-folders.yml
 - include_tasks: httpd-set.yml
+- include_tasks: firewall-set.yml
+- include_tasks: certificate-publish.yml
+ 
