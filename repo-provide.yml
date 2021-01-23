@@ -1,6 +1,0 @@
----
-- name: provide repo
-  hosts: dev7
-  become: yes
-  roles:
-  - repo-provide

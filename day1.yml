@@ -52,4 +52,9 @@
   become: yes
   roles:
   - mirror-add
+
+- name: update mirror list and yum repo
+  hosts: total
+  become: yes
+  roles:
   - yum-update

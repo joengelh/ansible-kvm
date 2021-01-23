@@ -4,9 +4,11 @@
     path: /tmp/
     patterns: "*.crt"
   register: findCert
+  delegate_to: localhost
 
 - name: download certificate from master server
   copy:
-    src: "{{ item }}"
+    src: "{{ item.path }}"
     dest: /etc/pki/ca-trust/source/anchors/
   loop: "{{ findCert.files }}"
+  notify: caReload

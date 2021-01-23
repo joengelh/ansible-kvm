@@ -1,14 +1,8 @@
 ---
-- name: place page config file file
+- name: place ssl config file
   template:
-    dest: "{{ httpdDir }}sites-available/{{ ansibleMaster }}.conf"
-    src: httpd.conf
-
-- name: create symlink
-  file:
-    state: link
-    src: "{{ httpdDir }}sites-available/{{ ansibleMaster }}.conf"
-    dest: "{{ httpdDir }}sites-enabled/{{ ansibleMaster }}.conf"
+    dest: "/etc/httpd/conf.d/ssl.conf"
+    src: ssl.conf
   notify:
   - httpdRestart
   - httpsFirewalld
@@ -17,6 +11,3 @@
   file:
     dest: "{{ httpdDir }}conf.d/welcome.conf"
     state: absent
-  notify: 
-  - httpdRestart
-  - httpsFirewalld
