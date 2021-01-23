@@ -1,19 +1,22 @@
 ---
 - name: place page config file file
   template:
-    dest: "/etc/httpd/sites-available/{{ ansibleMaster }}.conf"
+    dest: "{{ httpdDir }}sites-available/{{ ansibleMaster }}.conf"
     src: httpd.conf
 
 - name: create symlink
   file:
     state: link
-    src: "/etc/httpd/sites-available/{{ ansibleMaster }}.conf"
-    dest: "/etc/httpd/sites-enabled/{{ ansibleMaster }}.conf"
+    src: "{{ httpdDir }}sites-available/{{ ansibleMaster }}.conf"
+    dest: "{{ httpdDir }}sites-enabled/{{ ansibleMaster }}.conf"
   notify:
   - httpdRestart
+  - httpsFirewalld
 
 - name: remove apache welcome page
   file:
-    dest: /etc/httpd/conf.d/welcome.conf
+    dest: "{{ httpdDir }}conf.d/welcome.conf"
     state: absent
-  notify: httpdRestart
+  notify: 
+  - httpdRestart
+  - httpsFirewalld

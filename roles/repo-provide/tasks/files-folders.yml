@@ -3,14 +3,17 @@
   file:
     path: "{{ item }}"
     state: directory
-    recurse: yes
+    recurse: no
   loop:
-  - "{{ certDirectory }}"
-  - "{{ repoDirectory }}centosplus/"
-  - "{{ repoDirectory }}base/"
-  - "{{ repoDirectory }}extras/"
-  - "{{ repoDirectory }}updates/"
-  - "{{ httpdDirectory }}sites-available/"
-  - "{{ httpdDirectory }}sites-enabled/"
-  notify: 
-  - reposync
+  - "{{ certDir }}"
+  - "{{ repoDir }}centosplus/"
+  - "{{ repoDir }}base/"
+  - "{{ repoDir }}extras/"
+  - "{{ repoDir }}updates/"
+  - "{{ httpdDir }}sites-available/"
+  - "{{ httpdDir }}sites-enabled/"
+  register: dirResult
+
+- name: reposync
+  shell: "reposync -g -l -d -m --repoid=centosplus --newest-only --download-metadata --download_path=/var/www/html/repos/"
+  notify: createrepo

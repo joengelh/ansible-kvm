@@ -1,8 +1,8 @@
 ---
-- name: add local mirror to repi
+- name: add local mirror to .repo 
   yum_repository:
     name: local
     description: local mirror for faster install
-    baseurl: https://{{ masterAddress }}/
+    baseurl: "https://{{ ansibleMaster }}/"
     gpgcheck: no
     enabled: yes

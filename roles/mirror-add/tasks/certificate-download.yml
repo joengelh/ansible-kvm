@@ -1,6 +1,12 @@
 ---
+- name: find all certificate files from master server
+  find:
+    path: /tmp/
+    patterns: "*.crt"
+  register: findCert
+
 - name: download certificate from master server
   copy:
     src: "{{ item }}"
     dest: /etc/pki/ca-trust/source/anchors/
-  with_fileglob: /tmp/*.c*
+  loop: "{{ findCert.files }}"

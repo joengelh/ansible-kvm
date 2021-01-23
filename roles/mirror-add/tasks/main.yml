@@ -1,5 +1,4 @@
 ---
-- include_tasks: folders-create.yml
 - include_tasks: mirror-add.yml
 - include_tasks: certificate-download.yml
 - include_tasks: files-download.yml
