@@ -1,6 +1,6 @@
 [roottotal]
-rootnfs ansible_host=192.168.2.11
-rootdev7 ansible_host=192.168.2.13
+rootdev7 ansible_host=192.168.2.117
+rootdevstream ansible_host=192.168.2.116
 
 [total]
 nfs ansible_host=192.168.2.11

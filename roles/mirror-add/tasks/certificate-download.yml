@@ -1,10 +1,6 @@
+---
 - name: download certificate from master server
   copy:
     src: "{{ item }}"
     dest: /etc/pki/ca-trust/source/anchors/
-  register: certCopy
   with_fileglob: /tmp/*.c*
-
-- name: reload CA certificates
-  command: update-ca-trust
-  when: certCopy.changed

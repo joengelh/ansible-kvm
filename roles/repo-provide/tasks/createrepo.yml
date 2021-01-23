@@ -1,4 +1,0 @@
----
-- name: run createrepo
-  command: "createrepo /localrepo"
-  when: copyResult.changed or unpackResult.changed

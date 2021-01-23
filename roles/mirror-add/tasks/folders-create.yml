@@ -5,5 +5,3 @@
     state: directory
     recurse: yes
   loop:
-  - /var/files
-  - /var/folders

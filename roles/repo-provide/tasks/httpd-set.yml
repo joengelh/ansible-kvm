@@ -1,24 +1,19 @@
 ---
-- name: place httpd config file
+- name: place page config file file
   template:
-    dest: /etc/httpd/conf/httpd.conf
+    dest: "/etc/httpd/sites-available/{{ ansibleMaster }}.conf"
     src: httpd.conf
-  register: templateresult
 
-- name: place ssl conf file
-  template:
-    dest: /etc/httpd/conf.d/
-    src: ssl.conf
-  register: sslresult
+- name: create symlink
+  file:
+    state: link
+    src: "/etc/httpd/sites-available/{{ ansibleMaster }}.conf"
+    dest: "/etc/httpd/sites-enabled/{{ ansibleMaster }}.conf"
+  notify:
+  - httpdRestart
 
 - name: remove apache welcome page
   file:
     dest: /etc/httpd/conf.d/welcome.conf
     state: absent
-
-- name: restart service if httpd tempalte changed
-  service:
-    name: httpd
-    state: restarted
-    enabled: yes
-  when: templateresult.changed or sslresult.changed
+  notify: httpdRestart

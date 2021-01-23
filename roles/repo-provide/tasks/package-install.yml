@@ -6,4 +6,5 @@
     - httpd
     - mod_ssl
     - openssl
+    - yum-utils
     state: latest

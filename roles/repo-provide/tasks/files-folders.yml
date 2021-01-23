@@ -5,28 +5,12 @@
     state: directory
     recurse: yes
   loop:
-  - /etc/pki/tls/certs
-  - /localrepo/certificates
-  - /etc/httpd/conf.d/
-
-- name: unpack rpm files to directory localrepo
-  unarchive:
-    copy: yes
-    src: "{{ item }}"
-    dest: /localrepo
-  with_fileglob: /var/packages/*.tar.gz
-  register: unpackResult 
-
-- name: copy rpm files to directory localrepo
-  copy:
-    src: "{{ item }}"
-    dest: /localrepo
-  with_fileglob: /var/packages/*.rpm
-  register: copyResult
-
-- name: copy files folder to directory
-  copy:
-    src: "{{ item }}"
-    dest: /localrepo/files/
-  loop:
-  - /var/files/
+  - "{{ certDirectory }}"
+  - "{{ repoDirectory }}centosplus/"
+  - "{{ repoDirectory }}base/"
+  - "{{ repoDirectory }}extras/"
+  - "{{ repoDirectory }}updates/"
+  - "{{ httpdDirectory }}sites-available/"
+  - "{{ httpdDirectory }}sites-enabled/"
+  notify: 
+  - reposync

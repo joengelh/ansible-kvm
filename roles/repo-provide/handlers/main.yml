@@ -1,0 +1,13 @@
+---
+- name: httpdRestart
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+
+- name: createrepo
+  shell: "createrepo {{ httpDirectory }}"
+  notify: reposync
+
+- name: reposync
+  shell: "reposync -g -l -d -m --repoid=centosplus --newest-only --download-metadata --download_path=/var/www/html/repos/"
