@@ -11,9 +11,9 @@
   when: not cert_exists.stat.exists
 
 - name: create self-signed OpenSSL-certificate
-  command: openssl x509 -req -days 3650 -in "{{ certDir }}{{ inventory_hostname }}.csr" -signkey "{{ certDir }}{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.crt"
+  command: openssl x509 -req -days 3650 -in "{{ privateDir }}{{ inventory_hostname }}.csr" -signkey "{{ privateDir }}{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.crt"
   args:
-    chdir: "{{ certDirectory }}"
+    chdir: "{{ certDir }}"
   when: not cert_exists.stat.exists
 
 - name: download certificate from server to tmp

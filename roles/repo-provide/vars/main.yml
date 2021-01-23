@@ -1,7 +1,0 @@
----
-ansibleMaster: "192.168.2.13"
-httpsPort: "443"
-httpDirectory: "/var/www/html/"
-repoDirectory: "/var/www/html/repos/"
-certDirectory: "/etc/pki/tls/certs/"
-httpdDirectory: "/etc/httpd/"

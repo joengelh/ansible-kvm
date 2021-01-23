@@ -1,3 +1,9 @@
 ---
 ansible_user: ansible
-netPath: /etc/pki/tls/certs/
+privateDir: "/etc/ssl/private/"
+certDir: "/etc/ssl/certs/"
+ansibleMaster: "192.168.2.13"
+httpsPort: "443"
+htmlDir: "/var/www/html/"
+repoDir: "/var/www/html/repos/"
+httpdDir: "/etc/httpd/"
