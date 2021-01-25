@@ -4,3 +4,4 @@
 - import_tasks: cockpit-software.yml
 - import_tasks: cockpit-service.yml
 - import_tasks: cockpit-firewall.yml
+- import_tasks: cockpit-certificate.yml

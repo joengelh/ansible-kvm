@@ -1,0 +1,9 @@
+---
+- name: download certificate from server to tmp
+  fetch:
+    src: "{{ item }}"
+    dest: /tmp/
+    flat: yes
+  loop: 
+  - "/etc/cockpit/ws-certs.d/0-self-signed.cert"
+

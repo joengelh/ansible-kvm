@@ -2,7 +2,7 @@
 - name: find all certificate files from master server
   find:
     path: /tmp/
-    patterns: "*.crt"
+    patterns: "*.*rt"
   register: findCert
   delegate_to: localhost
 
