@@ -10,4 +10,4 @@
   when: 
     - network_ether_interfaces is defined
     - network_bond_interfaces is not defined
-  register: ether_result
+  notify: reboot

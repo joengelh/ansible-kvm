@@ -5,4 +5,4 @@
     dest: "{{ net_path }}/ifcfg-{{ item.device }}"
   loop: "{{ network_bridge_interfaces }}"
   when: network_bridge_interfaces is defined
-  register: bridge_result
+  notify: reboot

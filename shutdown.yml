@@ -1,0 +1,6 @@
+---
+- name: shutdoown bare metal servers
+  hosts: baremetal
+  become: yes
+  roles:
+  - shutdown

@@ -1,4 +1,0 @@
----
-- name: reboot machine if network changed
-  command: reboot
-  when: vlan_result.changed or bridge_result.changed or ether_result.changed
