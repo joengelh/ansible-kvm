@@ -1,0 +1,6 @@
+---
+network_ether_interfaces:
+  - device: enp0s25
+    onboot: yes
+    bridge: br0
+    bootproto: static

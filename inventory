@@ -1,6 +1,7 @@
 [roottotal]
-rootdev7 ansible_host=192.168.2.117
-rootdevstream ansible_host=192.168.2.116
+roottower ansible_host=192.168.2.108
+dev8 ansible_host=192.168.2.113
+rootgitlab ansible_host=192.168.2.106
 
 [total]
 nfs ansible_host=192.168.2.11
