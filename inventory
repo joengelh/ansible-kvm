@@ -1,5 +1,5 @@
 [roottotal]
-rootdocker ansible_host=192.168.2.108
+rootdocker ansible_host=192.168.2.15
 
 [total:children]
 vm
