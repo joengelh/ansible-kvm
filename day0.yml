@@ -5,6 +5,11 @@
   - user-add
   - ssh-configure
 
+- name: set correct timezone 
+  hosts: roottotal
+  roles:
+  - time-set
+
 - name: place network scripts
   hosts: roottotal
   roles: 
