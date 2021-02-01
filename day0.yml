@@ -1,8 +1,9 @@
 ---
-- name: add ansible user and place ssh public key
+- name: add ansible user, set ssh config and place ssh public key
   hosts: roottotal
   roles:
   - user-add
+  - ssh-configure
 
 - name: place network scripts
   hosts: roottotal
