@@ -1,7 +1,5 @@
 [roottotal]
-roottower ansible_host=192.168.2.108
-rootdev8 ansible_host=192.168.2.113
-rootgitlab ansible_host=192.168.2.106
+rootdocker ansible_host=192.168.2.108
 
 [total:children]
 vm
@@ -10,6 +8,7 @@ baremetal
 [vm]
 nfs ansible_host=192.168.2.11
 dev7 ansible_host=192.168.2.13
+docker ansible_host=192.168.2.15
 
 [baremetal]
 tower ansible_host=192.168.2.2
