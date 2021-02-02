@@ -4,8 +4,8 @@
     name: 
       - postfix
     state: latest
- - name: postfix service enabled
-   ansible.builtin.service:
-     name: postfixd
-     enabled: yes
-     state: started
+- name: postfix service enabled
+  ansible.builtin.service:
+    name: postfix
+    enabled: yes
+    state: started

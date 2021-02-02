@@ -1,7 +1,7 @@
 ---
 - name: download shellscript
   get_url: 
-    src: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh
+    url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh
     dest: /home/ansible/script.rpm.sh
     mode: "0777"
   register: downloadResult
@@ -16,5 +16,5 @@
 
 - name: install gitlab finally ;)
   dnf:
-    name: gitlab-ee
-    state: latest 
+    name: gitlab-ce
+    state: latest

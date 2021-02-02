@@ -1,6 +1,6 @@
 ---
 - name: open ports in firewall
-  firewall:
+  firewalld:
     service: "{{ item }}"
     permanent: yes
     state: enabled
