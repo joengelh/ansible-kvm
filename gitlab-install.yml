@@ -3,4 +3,5 @@
   hosts: gitlab
   become: yes
   roles:
+  - certificate-create 
   - gitlab-install

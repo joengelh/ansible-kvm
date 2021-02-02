@@ -1,0 +1,20 @@
+---
+- name: download shellscript
+  get_url: 
+    src: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh
+    dest: /home/ansible/script.rpm.sh
+    mode: "0777"
+  register: downloadResult
+
+- name: run installer
+  shell: bash /home/ansible/script.rpm.sh
+  when: downloadResult.changed
+
+- name: set enviroment variable
+  shell: EXTERNAL_URL="https://gitlab.local"
+  when: downloadResult.changed
+
+- name: install gitlab finally ;)
+  dnf:
+    name: gitlab-ee
+    state: latest 

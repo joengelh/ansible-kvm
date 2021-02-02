@@ -2,13 +2,10 @@
 - name: Install dependencies
   ansible.builtin.dnf:
     name: 
-      - curl
-      - policycoreutils
-      - openssh-server
-      - perl
+      - postfix
     state: latest
- - name: ssh service enabled
+ - name: postfix service enabled
    ansible.builtin.service:
-     name: sshd
+     name: postfixd
      enabled: yes
      state: started

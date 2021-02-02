@@ -1,0 +1,6 @@
+---
+- name: firewallRestart
+  service:
+    state: restarted
+    name: firewalld
+
