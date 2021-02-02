@@ -1,6 +1,0 @@
----
-- include_tasks: prequsites-install.yml 
-- include_tasks: firewall-configure.yml
-- include_tasks: postfix-install.yml
-- include_tasks: gitlab-install.yml
-
