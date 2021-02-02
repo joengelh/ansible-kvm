@@ -1,0 +1,6 @@
+---
+- name: install gitlab
+  hosts: gitlab
+  become: yes
+  roles:
+  - gitlab-install
