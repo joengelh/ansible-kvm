@@ -6,10 +6,7 @@
     recurse: no
   loop:
   - "{{ certDir }}"
-  - "{{ repoDir }}centosplus/"
-  - "{{ repoDir }}base/"
-  - "{{ repoDir }}extras/"
-  - "{{ repoDir }}updates/"
+  - "{{ repoDir }}"
   - "{{ httpdDir }}sites-available/"
   - "{{ httpdDir }}sites-enabled/"
   register: dirResult

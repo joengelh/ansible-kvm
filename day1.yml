@@ -45,13 +45,13 @@
   hosts: dev7
   become: yes
   roles: 
-  - repo-provide
+  - yum-repo-provide
 
 - name: add mirror
   hosts: total
   become: yes
   roles:
-  - mirror-add
+  - yum-mirror-add
 
 - name: update mirror list and yum repo
   hosts: total
