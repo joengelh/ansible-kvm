@@ -1,3 +1,2 @@
 ---
-- include_tasks: mirror-add.yml
-- include_tasks: certificate-download.yml
+- include_tasks: yum-mirror-add.yml

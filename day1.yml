@@ -47,10 +47,11 @@
   roles: 
   - yum-repo-provide
 
-- name: add mirror
+- name: add yum mirror
   hosts: total
   become: yes
   roles:
+  - certificate-download
   - yum-mirror-add
 
 - name: update mirror list and yum repo
