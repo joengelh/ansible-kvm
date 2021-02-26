@@ -1,5 +1,5 @@
 [roottotal]
-rootdevstream ansible_host=192.168.2.15
+rootdevStream ansible_host=192.168.2.104
 
 [total:children]
 vm

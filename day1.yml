@@ -1,14 +1,9 @@
 ---
 - name: set hostname like ansible inventory name
-  hosts: total
+  hosts: vm
   become: yes
   roles:
   - hostname-set
-
-- name: update yum packages
-  hosts: total
-  become: yes
-  roles:
   - yum-update
 
 - name: install and enable kvm
@@ -24,7 +19,7 @@
   - cockpit-install
 
 - name: create CA certificate on every host
-  hosts: total
+  hosts: vm
   become: yes
   roles:
   - certificate-create
@@ -48,14 +43,14 @@
   - yum-repo-provide
 
 - name: add yum mirror
-  hosts: total
+  hosts: vm
   become: yes
   roles:
   - certificate-download
   - yum-mirror-add
 
 - name: update mirror list and yum repo
-  hosts: total
+  hosts: vm
   become: yes
   roles:
   - yum-update
