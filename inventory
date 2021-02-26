@@ -1,5 +1,5 @@
 [roottotal]
-rootdocker ansible_host=192.168.2.15
+rootdevstream ansible_host=192.168.2.15
 
 [total:children]
 vm
@@ -9,6 +9,7 @@ baremetal
 nfs ansible_host=192.168.2.11
 dev7 ansible_host=192.168.2.13
 docker ansible_host=192.168.2.15
+devStream ansible_host=192.168.2.14
 
 [baremetal]
 tower ansible_host=192.168.2.2
