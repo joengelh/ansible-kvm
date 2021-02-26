@@ -1,0 +1,6 @@
+---
+- name: update all specified hosts yum repository
+  hosts: vm
+  become: yes
+  roles: 
+  - yum-update
