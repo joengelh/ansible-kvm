@@ -1,0 +1,6 @@
+---
+- name: enable anydesk
+  service:
+    name: anydesk
+    enabled: yes
+    state: started

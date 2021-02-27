@@ -1,2 +1,5 @@
 ---
-- include_tasks: anydesk-install.yml
+- include_tasks: packages-install.yml
+- include_tasks: service-start.yml
+- include_tasks: configure.yml
+- include_tasks: reboot.yml
