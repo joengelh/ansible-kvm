@@ -54,3 +54,9 @@
   become: yes
   roles:
   - yum-update
+
+- name: install docker 
+  hosts: docker
+  become: yes
+  roles:
+  - docker-install
