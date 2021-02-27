@@ -60,3 +60,9 @@
   become: yes
   roles:
   - docker-install
+
+- name: set up api and webserver for local wol
+  hosts: docker
+  become: yes
+  roles:
+  - docker-wolserver

@@ -1,0 +1,3 @@
+broadcastIp: "192.168.2.255"
+wolPort: 9
+executingUser: "ansible"
