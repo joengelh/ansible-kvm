@@ -1,5 +1,0 @@
----
-- include_tasks: git-clone.yml
-- include_tasks: template-place.yml
-- include_tasks: container-start.yml
-- include_tasks: firewall.yml
