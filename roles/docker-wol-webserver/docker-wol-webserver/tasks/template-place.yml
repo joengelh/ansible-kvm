@@ -1,0 +1,5 @@
+---
+- name: place computer.csv including all MAC adresses and so forth
+  template:
+    src: servers.csv.j2
+    dest: "{{ repoDirectory }}servers.csv"

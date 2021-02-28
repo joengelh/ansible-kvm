@@ -1,0 +1,15 @@
+---
+- name: register if container is already running
+  shell: docker ps -a
+  register: runningContainers 
+  changed_when: no
+
+- debug:
+    var: runningContainers
+
+- name: start build and push container, start and enable
+  shell: bash adnpush.sh; bash runner.sh
+  become_user: "{{ user }}"
+  args:
+    chdir: "{{ repoDirectory }}"
+  when: "containerName not in runningContainers.stdout"

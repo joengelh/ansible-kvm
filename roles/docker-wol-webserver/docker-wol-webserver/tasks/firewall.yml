@@ -1,0 +1,8 @@
+---
+- name: open port 80 on docker host
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+    immediate: yes
+  notify: firewallRestart
