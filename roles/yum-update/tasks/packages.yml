@@ -1,5 +1,15 @@
 ---
-- name: install required packages
+- name: install epel-release
   yum:
-    name: yum-utils
+    name: epel-release
     state: latest
+
+- name: install required packages and common packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop:
+  - yum-utils
+  - htop
+  - wget
+  - vim
