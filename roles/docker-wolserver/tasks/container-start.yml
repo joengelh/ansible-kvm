@@ -1,0 +1,8 @@
+---
+- name: register if container is already running
+  shell: sudo docker ps -a
+  register: runningContainers 
+
+- name: start build and push container, start and enable
+  shell: bash /home/ansible/docker-wol-webserver/adall.sh && bash /home/ansible/docker-wol-webserver/runner.sh
+  when: "{{ containerName }}" not in "{{ runningContainers }}"

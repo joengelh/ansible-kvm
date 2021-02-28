@@ -2,4 +2,4 @@
 - name: place computer.csv including all MAC adresses and so forth
   template:
     src: computer.csv.j2
-    dest: "/home/{{ executingUser }}/computer.csv"
+    dest: "/tmp/computer.csv"
