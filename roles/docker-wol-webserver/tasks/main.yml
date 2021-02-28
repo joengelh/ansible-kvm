@@ -1,2 +1,3 @@
 ---
 - include_tasks: template-place.yml
+- include_tasks: container-start.yml
