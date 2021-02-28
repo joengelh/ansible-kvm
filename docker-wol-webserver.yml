@@ -1,6 +1,0 @@
----
-- name: install docker wol webservice
-  hosts: docker
-  become: yes
-  roles:
-  - docker-wol-webserver

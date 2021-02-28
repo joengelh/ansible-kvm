@@ -65,4 +65,4 @@
   hosts: docker
   become: yes
   roles:
-  - docker-wolserver
+  - docker-wol-webserver
