@@ -1,3 +1,5 @@
 broadcastIp: "192.168.2.255"
 wolPort: 7
-containerName: wolWebserver
+containerName: "wolWebserver"
+user: "ansible"
+repoDirectory: "/home/{{ user }}/docker-wls-webserver/"
