@@ -1,0 +1,9 @@
+---
+- name: register if container is already running
+  shell: docker ps -a
+  register: runningContainers 
+  changed_when: no
+
+- name: start build and push container, start and enable
+  shell: "docker run --name {{ container_name }} -p {{ port }}:{{ port }} -e MYSQL_ROOT_PASSWORD={{ password }} --restart unless-stopped -d mariadb"
+  when: "containerName not in runningContainers.stdout"

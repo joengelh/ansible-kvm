@@ -1,0 +1,8 @@
+---
+- name: create persistent data volume for mariadb
+  file:
+    state: directory
+    owner: ansible
+    group: ansible
+    mode: 600
+    path: "{{ volumePath }}"

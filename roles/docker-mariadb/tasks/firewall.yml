@@ -1,0 +1,7 @@
+---
+- name: open port "{{ port }}" on docker host
+  firewalld:
+    port: "{{ port }}/tcp"
+    permanent: yes
+    state: enabled
+    immediate: yes
