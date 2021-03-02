@@ -6,11 +6,10 @@
 
 - name: install required packages and common packages
   yum:
-    name: "{{ item }}"
-    state: latest
-  loop:
-  - yum-utils
-  - htop
-  - wget
-  - vim
-  - python3
+    name:
+    - yum-utils
+    - htop
+    - wget
+    - vim
+    - python3
+  state: latest
