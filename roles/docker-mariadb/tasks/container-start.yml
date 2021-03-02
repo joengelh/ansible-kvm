@@ -5,5 +5,5 @@
   changed_when: no
 
 - name: start build and push container, start and enable
-  shell: "docker run --name {{ containerName }} -p {{ dbPort }}:{{ dbPort }} -e MYSQL_ROOT_PASSWORD={{ dbPassword }} --restart unless-stopped -d mariadb"
+  shell: "docker run --name {{ containerName }} -v {{ volumePath }} -p {{ dbPort }}:{{ dbPort }} -e MYSQL_ROOT_PASSWORD={{ dbPassword }} --restart unless-stopped -d mariadb"
   when: "containerName not in runningContainers.stdout"
