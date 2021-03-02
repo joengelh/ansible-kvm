@@ -2,7 +2,8 @@
 - name: create persistent data volume for mariadb
   file:
     state: directory
-    owner: ansible
-    group: ansible
+    owner: "{{ user }}"
+    group: wheel
+    recurse: yes
     mode: 600
     path: "{{ volumePath }}"

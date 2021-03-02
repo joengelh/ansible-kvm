@@ -1,7 +1,7 @@
 ---
-- name: open port "{{ port }}" on docker host
+- name: open port "{{ dbPort }}" on docker host
   firewalld:
-    port: "{{ port }}/tcp"
+    port: "{{ dbPort }}/tcp"
     permanent: yes
     state: enabled
     immediate: yes
