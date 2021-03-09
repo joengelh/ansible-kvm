@@ -1,0 +1,3 @@
+---
+mountPath: "/mnt/nfs"
+user: "ansible"

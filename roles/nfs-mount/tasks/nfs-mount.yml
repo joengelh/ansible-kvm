@@ -1,0 +1,8 @@
+---
+- name: mount nfs directory
+  mount:
+    name: Datastore001
+    src: "192.168.2.11:/mnt/Datastore001"
+    fstype: nfs
+    state: mounted
+

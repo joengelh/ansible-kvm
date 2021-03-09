@@ -36,6 +36,12 @@
   roles:
   - anydesk-install
 
+- name: mount nfs storage to all hosts
+  hosts: vm
+  become: yes
+  roles:
+  - nfs-mount
+
 - name: create software mirror
   hosts: dev7
   become: yes

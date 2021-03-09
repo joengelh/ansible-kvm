@@ -1,0 +1,5 @@
+---
+- name: install required packages
+  yum:
+    name: nfs-utils
+    state: latest

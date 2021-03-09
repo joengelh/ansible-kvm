@@ -1,0 +1,4 @@
+---
+- include_tasks: packages-install.yml
+- include_tasks: directory-create.yml
+- include_tasks: nfs-mount.yml
