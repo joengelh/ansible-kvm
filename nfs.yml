@@ -1,6 +1,0 @@
----
-- name: mount nfs storage to all hosts
-  hosts: vm
-  become: yes
-  roles:
-  - nfs-mount
