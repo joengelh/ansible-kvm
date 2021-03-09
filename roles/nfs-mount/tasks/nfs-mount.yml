@@ -1,8 +1,9 @@
 ---
 - name: mount nfs directory
   mount:
-    name: Datastore001
-    src: "192.168.2.11:/mnt/Datastore001"
+    src: "192.168.2.11:/mnt/Datastore1"
+    path: "{{ mountPath }}"
     fstype: nfs
+    opts: defaults
     state: mounted
 

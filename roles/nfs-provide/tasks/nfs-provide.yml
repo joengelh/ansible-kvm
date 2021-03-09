@@ -22,7 +22,7 @@
     state: directory
     group: nobody
     owner: nobody
-    mode: "777"
+    mode: "0777"
 
 - name: execute export
   command: sudo exportfs -arv

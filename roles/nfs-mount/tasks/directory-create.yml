@@ -4,5 +4,5 @@
     path: "{{ mountPath }}"
     owner: "{{ user }}"
     group: wheel
-    mode: 777
+    mode: 0777
     state: directory
