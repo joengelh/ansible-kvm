@@ -5,5 +5,5 @@
     owner: "{{ user }}"
     group: wheel
     recurse: yes
-    mode: 600
+    mode: 0770
     path: "{{ volumePath }}"

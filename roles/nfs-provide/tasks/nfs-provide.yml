@@ -13,12 +13,12 @@
 - name: export directory
   lineinfile:
     path: /etc/exports
-    line: "/mnt/Datastore1 *(rw,sync,no_root_squash)"
+    line: "{{ nfsPath }} *(rw,sync,no_root_squash)"
   register: export_result
 
 - name: create directory
   file:
-    path: /mnt/Datastore1
+    path: "{{ nfsPath }}"
     state: directory
     group: nobody
     owner: nobody

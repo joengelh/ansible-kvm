@@ -12,4 +12,4 @@
     - wget
     - vim
     - python3
-  state: latest
+    state: latest
