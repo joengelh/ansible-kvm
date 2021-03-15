@@ -4,6 +4,6 @@
     state: directory
     owner: "{{ user }}"
     group: wheel
-    recurse: yes
-    mode: 0777
+    recurse: no
+    mode: 0770
     path: "{{ volumePath }}"
