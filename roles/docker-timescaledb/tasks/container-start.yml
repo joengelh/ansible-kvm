@@ -1,0 +1,9 @@
+---
+- name: register if container is already running
+  shell: docker ps -a
+  register: runningContainers 
+  changed_when: no
+
+- name: start build and push container, start and enable
+  shell: "docker run --name {{ containerName }} -v {{ volumePath }}:/var/lib/mysql -p {{ dbPort }}:{{ dbPort }} -e POSTGRES_PASSWORD={{ dbPassword }} --restart unless-stopped -d timescaledb"
+  when: "containerName not in runningContainers.stdout"

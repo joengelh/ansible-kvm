@@ -73,8 +73,9 @@
   roles:
   - docker-wol-webserver
 
-- name: set up database 
+- name: set up databases
   hosts: docker
   become: yes
   roles:
   - docker-mariadb
+  - docker-timescaledb

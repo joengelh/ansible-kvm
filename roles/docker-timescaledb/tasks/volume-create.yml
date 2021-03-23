@@ -1,0 +1,9 @@
+---
+- name: create persistent data volume for mariadb
+  file:
+    state: directory
+    owner: "{{ user }}"
+    group: wheel
+    recurse: no
+    mode: 0777
+    path: "{{ volumePath }}"

@@ -1,0 +1,5 @@
+containerName: "timescaleDb"
+user: "ansible"
+dbPassword: "password"
+dbPort: 5432
+volumePath: "/opt/mariadb/data"
