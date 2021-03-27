@@ -1,0 +1,6 @@
+---
+- name: set up databases
+  hosts: docker
+  become: yes
+  roles:
+  - docker-timescaledb
