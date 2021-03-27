@@ -66,6 +66,8 @@
   become: yes
   roles:
   - docker-install
+  - docker-compose
+  tags: docker
 
 - name: set up webserver for local wol
   hosts: docker
@@ -79,3 +81,4 @@
   roles:
   - docker-mariadb
   - docker-timescaledb
+  tags: never
