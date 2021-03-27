@@ -5,5 +5,5 @@
   changed_when: no
 
 - name: start build and push container, start and enable
-  shell: "docker run --name {{ containerName }} -v {{ volumePath }}:/var/lib/mysql -p {{ dbPort }}:{{ dbPort }} -e POSTGRES_PASSWORD={{ dbPassword }} --restart unless-stopped -d timescale/timescaledb:latest-pg12"
+  shell: "docker run --name {{ containerName }} -v {{ volumePath }}:/var/lib/postgresql/data -p {{ dbPort }}:{{ dbPort }} -e POSTGRES_PASSWORD={{ dbPassword }} --restart unless-stopped -d timescale/timescaledb:latest-pg12"
   when: "containerName not in runningContainers.stdout"
