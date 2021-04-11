@@ -67,6 +67,7 @@
   roles:
   - docker-install
   - docker-compose
+  - docker-timescaledb
 
 - name: set up webserver for local wol
   hosts: docker
