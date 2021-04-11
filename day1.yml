@@ -1,6 +1,6 @@
 ---
 - name: set hostname like ansible inventory name
-  hosts: vm
+  hosts: total
   become: yes
   roles:
   - hostname-set
@@ -21,7 +21,7 @@
   - cockpit-install
 
 - name: create CA certificate on every host
-  hosts: vm
+  hosts: total
   become: yes
   roles:
   - certificate-create
@@ -39,7 +39,7 @@
   - anydesk-install
 
 - name: mount nfs storage to all hosts
-  hosts: vm
+  hosts: total
   become: yes
   roles:
   - nfs-mount
@@ -51,14 +51,14 @@
   - yum-repo-provide
 
 - name: add yum mirror
-  hosts: vm
+  hosts: total
   become: yes
   roles:
   - certificate-download
   - yum-mirror-add
 
 - name: update mirror list and yum repo
-  hosts: vm
+  hosts: total
   become: yes
   roles:
   - yum-update
@@ -69,18 +69,10 @@
   roles:
   - docker-install
   - docker-compose
-  tags: docker
+  - docker-timescaledb
 
 - name: set up webserver for local wol
   hosts: docker
   become: yes
   roles:
   - docker-wol-webserver
-
-- name: set up databases
-  hosts: docker
-  become: yes
-  roles:
-  - docker-mariadb
-  - docker-timescaledb
-  tags: never
