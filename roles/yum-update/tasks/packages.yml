@@ -11,5 +11,6 @@
     - htop
     - wget
     - vim
+    - git
     - python3
     state: latest

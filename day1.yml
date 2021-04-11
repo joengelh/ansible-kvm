@@ -73,11 +73,3 @@
   become: yes
   roles:
   - docker-wol-webserver
-
-- name: set up databases
-  hosts: docker
-  become: yes
-  roles:
-  - docker-mariadb
-  - docker-timescaledb
-  tags: never
