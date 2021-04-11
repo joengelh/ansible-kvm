@@ -5,6 +5,8 @@
   roles:
   - hostname-set
   - yum-update
+  tags: 
+  - always
 
 - name: install and enable kvm
   hosts: kvm
