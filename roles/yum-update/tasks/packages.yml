@@ -12,5 +12,6 @@
     - wget
     - vim
     - git
+    - open-vm-tools
     - python3
     state: latest
