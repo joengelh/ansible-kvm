@@ -1,5 +1,5 @@
 ---
-- name: Clone the docker-mailadvisor git repo
+- name: Clone the docker-wol-webserver git repo
   git:
     repo: git@github.com:joengelh/docker-wol-webserver.git
     dest: "{{ repoDirectory }}"
