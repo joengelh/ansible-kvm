@@ -29,12 +29,6 @@
   roles:
   - nfs-provide
 
-- name: install anydesk
-  hosts: nfs
-  become: yes
-  roles:
-  - anydesk-install
-
 - name: mount nfs storage to all hosts
   hosts: total
   become: yes
