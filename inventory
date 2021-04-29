@@ -1,5 +1,5 @@
 [roottotal]
-rootmachine ansible_host=192.168.2.108
+rootmachine ansible_host=192.168.2.113
 
 [total:children]
 vm
@@ -16,3 +16,4 @@ dockerBm ansible_host=192.168.2.15
 [docker]
 dockerVm
 dockerBm
+hftn
