@@ -16,4 +16,3 @@ dockerBm ansible_host=192.168.2.15
 [docker]
 dockerVm
 dockerBm
-hftn
