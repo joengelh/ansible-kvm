@@ -3,6 +3,7 @@
   firewalld:
     service: "{{ item.service }}"
     permanent: yes
+    immedeate: yes
     state: "{{ item.state }}"
   loop:
   - { service: "https", state: "enabled" }
