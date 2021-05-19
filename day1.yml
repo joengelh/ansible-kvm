@@ -60,9 +60,3 @@
   roles:
   - docker-install
   - docker-compose
-
-- name: set up webserver for local wol
-  hosts: docker
-  become: yes
-  roles:
-  - docker-wol-webserver

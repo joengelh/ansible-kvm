@@ -1,6 +1,0 @@
----
-- name: Clone the docker-wol-webserver git repo
-  git:
-    repo: git@github.com:joengelh/docker-wol-webserver.git
-    dest: "{{ repoDirectory }}"
-  become_user: ansible

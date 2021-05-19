@@ -1,4 +1,0 @@
----
-- include_tasks: volume-create.yml
-- include_tasks: container-start.yml
-- include_tasks: firewall.yml

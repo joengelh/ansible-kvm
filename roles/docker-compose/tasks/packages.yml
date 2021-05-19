@@ -5,6 +5,7 @@
   command: systemctl status docker
   register: docker_check
   ignore_errors: yes
+  changed_when: no
 
 - name: Download the Docker installer
   get_url:

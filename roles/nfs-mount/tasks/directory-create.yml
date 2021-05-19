@@ -2,7 +2,4 @@
 - name: create mountable directory
   file:
     path: "{{ mountPath }}"
-    owner: "{{ user }}"
-    group: wheel
-    mode: 0777
     state: directory

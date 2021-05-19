@@ -4,7 +4,7 @@
     name: local
     description: local mirror for faster install
     baseurl: "https://{{ ansibleMaster }}/"
-    username: "{{ ansibleUser }}"
+    username: "{{ ansible_user }}"
     password: password
     gpgcheck: no
     enabled: yes

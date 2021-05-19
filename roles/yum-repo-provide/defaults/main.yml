@@ -1,0 +1,2 @@
+---
+htpassFile: "/etc/httpd/.htpasswd"

@@ -1,8 +1,8 @@
 ---
 - name: create httpd basic auth file
   htpasswd:
-    path: "{{ privateDir }}"
-    name: "{{ ansibleUser }}"
+    path: "{{ htpassFile }}"
+    name: "{{ ansible_user }}"
     password: password
     owner: apache
     group: root

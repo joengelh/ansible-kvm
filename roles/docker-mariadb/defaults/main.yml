@@ -1,5 +1,0 @@
-containerName: "mariaDb"
-user: "ansible"
-dbPassword: "password"
-dbPort: 3306
-volumePath: "/opt/mariadb/data"

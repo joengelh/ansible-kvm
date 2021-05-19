@@ -7,4 +7,5 @@
     - mod_ssl
     - openssl
     - yum-utils
+    - python-passlib
     state: latest
