@@ -4,6 +4,7 @@ rootmachine ansible_host=192.168.2.113
 [total:children]
 vm
 baremetal
+docker
 
 [vm]
 nfs ansible_host=192.168.2.11
@@ -16,4 +17,4 @@ dockerBm ansible_host=192.168.2.15
 [docker]
 dockerVm
 dockerBm
-hftn
+hftn ansible_host=192.168.2.3
