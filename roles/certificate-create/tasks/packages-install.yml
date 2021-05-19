@@ -1,7 +1,0 @@
----
-- name: install packages required for the role
-  yum:
-    name: 
-    - cryptography
-    - PyOpenSSL
-    state: latest

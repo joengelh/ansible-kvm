@@ -1,4 +1,0 @@
----
-- include_tasks: packages-install.yml
-- include_tasks: files-folders.yml
-- include_tasks: certificate-create.yml
