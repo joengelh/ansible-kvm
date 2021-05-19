@@ -5,7 +5,14 @@
     src: httpd.conf.j2
   notify: httpdRestart
 
-- name: remove apache welcome page
+- name: place sites available
+  template:
+    dest: "/etc/httpd/sites-available/{{ ansibleMaster }}.conf"
+    src: domain.conf.j2
+
+- name: create simlink from available to enabled
   file:
-    dest: "{{ httpdDir }}conf.d/welcome.conf"
-    state: absent
+    src: "/etc/httpd/sites-available/{{ ansibleMaster }}.conf"
+    dest: "/etc/httpd/sites-enabled/{{ ansibleMaster }}.conf"
+    state: link
+  notify: httpdRestart

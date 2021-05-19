@@ -3,10 +3,10 @@
     Listen {{ httpsPort }} https
 </IfModule>
 
-<VirtualHost *:{{ httpdPort }}>
+<VirtualHost *:{{ httpPort }}>
    ServerName unsecure.{{ ansibleMaster }}
    DocumentRoot /usr/local/apache2/htdocs
-   Redirect  https://{{ ansibleMaster }}
+   Redirect /secure https://{{ ansibleMaster }}
 </VirtualHost>
 
 <VirtualHost *:{{ httpsPort }}>
@@ -19,7 +19,7 @@
     <Directory {{ htmlDir }}>
         AuthType Basic
         AuthName "Apache with basic auth."
-        AuthUserFile {{ htpass_file }}
+        AuthUserFile {{ htpassFile }}
         Require valid-user
     </Directory>
 </VirtualHost>
