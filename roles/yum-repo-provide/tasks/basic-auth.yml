@@ -1,0 +1,10 @@
+---
+- name: create httpd basic auth file
+  htpasswd:
+    path: "{{ privateDir }}"
+    name: "{{ ansibleUser }}"
+    password: password
+    owner: apache
+    group: root
+    mode: 0640 
+
