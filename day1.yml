@@ -40,8 +40,6 @@
   become: yes
   roles: 
   - yum-repo-provide
-  tags:
-  - yum-repo-provide
 
 - name: add yum mirror
   hosts: total

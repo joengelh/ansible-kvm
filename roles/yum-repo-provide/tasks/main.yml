@@ -1,5 +1,5 @@
 ---
-- include_tasks: package-install.yml
+- include_tasks: packages-install.yml
 - include_tasks: files-folders.yml
 - include_tasks: basic-auth.yml
 - include_tasks: httpd-set.yml
