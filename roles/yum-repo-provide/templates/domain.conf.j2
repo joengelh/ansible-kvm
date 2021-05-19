@@ -1,0 +1,25 @@
+{{ ansible_managed | comment }}
+<IfModule ssl_module>
+    Listen {{ httpsPort }} https
+</IfModule>
+
+<VirtualHost *:{{ httpdPort }}>
+   ServerName unsecure.{{ ansibleMaster }}
+   DocumentRoot /usr/local/apache2/htdocs
+   Redirect  https://{{ ansibleMaster }}
+</VirtualHost>
+
+<VirtualHost *:{{ httpsPort }}>
+    SSLEngine on
+    SSLCertificateFile {{ certDir }}{{ inventory_hostname }}.crt
+    SSLCertificateKeyFile {{ privateDir }}{{ inventory_hostname }}.key
+    ServerAdmin root@localhost
+    ServerName {{ ansibleMaster }}
+    DocumentRoot {{ htmlDir }}
+    <Directory {{ htmlDir }}>
+        AuthType Basic
+        AuthName "Apache with basic auth."
+        AuthUserFile {{ htpass_file }}
+        Require valid-user
+    </Directory>
+</VirtualHost>

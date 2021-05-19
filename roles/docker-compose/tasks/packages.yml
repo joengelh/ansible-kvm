@@ -1,5 +1,7 @@
 - name: Upgrade all packages
-  yum: name=* state=latest
+  yum:
+    name: '*'
+    state: latest
 
 - name: Check if Docker is installed
   command: systemctl status docker
@@ -28,17 +30,13 @@
     name: docker
     enabled: yes
     masked: no
-
-- name: Start the Docker daemon
-  systemd:
-    name: docker
-    state: started
-    masked: no
+    started: yes
 
 - name: Check if Docker Compose is installed
   command: docker-compose --version
   register: docker_compose_check
   ignore_errors: yes
+  changed_when: no
 
 - name: Download and install Docker Compose
   get_url:

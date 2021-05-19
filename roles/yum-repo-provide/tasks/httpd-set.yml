@@ -1,8 +1,9 @@
 ---
-- name: place ssl config file
+- name: place httpd config file
   template:
-    dest: "/etc/httpd/conf.d/ssl.conf"
-    src: ssl.conf
+    dest: "/etc/httpd/conf/httpd.conf"
+    src: httpd.conf.j2
+  notify: httpdRestart
 
 - name: remove apache welcome page
   file:

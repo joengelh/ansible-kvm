@@ -6,6 +6,6 @@
     state: "{{ item.state }}"
   loop:
   - { service: "https", state: "enabled" }
-  - { service: "http", state: "disabled" }
+  - { service: "http", state: "enabled" }
   notify: 
   - httpdRestart
