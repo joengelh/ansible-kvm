@@ -30,7 +30,7 @@
     name: docker
     enabled: yes
     masked: no
-    started: yes
+    state: started
 
 - name: Check if Docker Compose is installed
   command: docker-compose --version
