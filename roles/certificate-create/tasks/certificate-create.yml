@@ -1,26 +1,30 @@
 ---
-- name: check if certificate is already present
-  stat:
+- name: create private ssl key
+  openssl_privatekey:
+    path: "{{ privateDir }}{{ inventory_hostname }}.key"
+
+- name: create csr
+  openssl_csr:
+    path: "{{ certDir }}{{ inventory_hostname }}.csr"
+    privatekey_path: "{{ privateDir }}{{ inventory_hostname }}.key"
+    subject: DE
+    ST: NRW
+    L: Duesseldorf
+    O: VCC
+    OU: 
+    - Engeneering
+    - Automation Service
+    CN: "{{ hostvars[inventory_hostname].ansible_host }}"
+
+- name: create self-signed certificate from csr
+  openssl_certificate:
     path: "{{ certDir }}{{ inventory_hostname }}.crt"
-  register: cert_exists
+    privatekey_path: "{{ privateDir }}{{ inventory_hostname }}.key"
+    csr_path: "{{ certDir }}{{ inventory_hostname }}.csr" 
+    provider: selfsigned
 
-- name: create self-signed OpenSSL-certificate csr & key
-  command: openssl req -new -newkey rsa:4096 -nodes -keyout "{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.csr" -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN={{ hostvars[inventory_hostname].ansible_host }}"
-  args:
-    chdir: "{{ privateDir }}"
-  when: not cert_exists.stat.exists
-
-- name: create self-signed OpenSSL-certificate
-  command: openssl x509 -req -days 3650 -in "{{ privateDir }}{{ inventory_hostname }}.csr" -signkey "{{ privateDir }}{{ inventory_hostname }}.key" -out "{{ inventory_hostname }}.crt"
-  args:
-    chdir: "{{ certDir }}"
-  when: not cert_exists.stat.exists
-
-- name: download certificate from server to tmp
-  fetch:
-    src: "{{ item }}"
+- name: copy certificate to tmp
+  copy:
+    src: "{{ certDir }}{{ inventory_hostname }}.crt"
     dest: /tmp/
     flat: yes
-  loop: 
-  - "{{ certDir }}{{ inventory_hostname }}.crt"
-
