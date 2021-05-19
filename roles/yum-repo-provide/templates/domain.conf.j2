@@ -5,8 +5,7 @@
 
 <VirtualHost *:{{ httpPort }}>
    ServerName unsecure.{{ ansibleMaster }}
-   DocumentRoot /usr/local/apache2/htdocs
-   Redirect /secure https://{{ ansibleMaster }}
+   Redirect permanent / https://{{ ansibleMaster }}
 </VirtualHost>
 
 <VirtualHost *:{{ httpsPort }}>

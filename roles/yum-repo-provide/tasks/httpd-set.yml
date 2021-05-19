@@ -9,6 +9,7 @@
   template:
     dest: "/etc/httpd/sites-available/{{ ansibleMaster }}.conf"
     src: domain.conf.j2
+  notify: httpdRestart
 
 - name: create simlink from available to enabled
   file:
