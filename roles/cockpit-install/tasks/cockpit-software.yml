@@ -14,7 +14,7 @@
     state: latest
   loop:
   - cockpit
-  - cockpit-dashboard
+  - cockpit-storaged
   - cockpit-machines
   - cockpit-networkmanager 
   - cockpit-packagekit 

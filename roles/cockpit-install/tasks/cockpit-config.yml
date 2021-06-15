@@ -1,5 +1,5 @@
 ---
 - name: place config file for cockpit, disabling timout
   template:
-    src: cockpit.conf
+    src: cockpit.conf.j2
     dest: /etc/cockpit/cockpit.conf
