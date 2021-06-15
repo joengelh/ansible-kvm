@@ -10,6 +10,7 @@
   become: yes
   roles:
   - libvirt-install
+  - cockpit-install
 
 - name: install cockpit and all of its dependencies
   hosts: nfs
