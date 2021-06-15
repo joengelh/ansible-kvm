@@ -1,0 +1,7 @@
+---
+- name: Start service libvirtd, if not started
+  service:
+    name: libvirtd
+    state: started
+    enabled: yes
+    masked: no

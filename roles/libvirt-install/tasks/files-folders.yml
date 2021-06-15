@@ -1,0 +1,5 @@
+---
+- name: make shure directory for cockpit config file exists
+  file:
+    state: directory
+    path: /etc/modprobe.d

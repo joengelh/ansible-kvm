@@ -1,0 +1,13 @@
+---
+- name: install the latest version of virt
+  dnf:
+    name:
+      - virt-install
+      - virt-viewer
+    state: latest
+
+- name: install the latest libguestfs-tools
+  yum:
+    name:
+      - libguestfs-tools
+    state: latest

@@ -1,0 +1,6 @@
+---
+- name: allow cockpit to pass firewall
+  firewalld:
+    port: 9090
+    permanent: yes
+    state: enabled
