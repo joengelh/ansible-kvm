@@ -10,11 +10,12 @@
 
 - name: install the latest version of cockpit and additional modules
   yum:
-    name:
-      - cockpit
-      - cockpit-dashboard
-      - cockpit-machines
-      - cockpit-networkmanager 
-      - cockpit-packagekit 
-      - cockpit-storaged
-    state: latest
+    name: "{{ item }}"
+  state: latest
+  loop:
+  - cockpit
+  - cockpit-dashboard
+  - cockpit-machines
+  - cockpit-networkmanager 
+  - cockpit-packagekit 
+  - cockpit-storaged
