@@ -5,9 +5,12 @@
     patterns: "*.*rt"
   register: findCert
   delegate_to: localhost
+  run_once: true
 
 - name: download certificate from master server
   copy:
     src: "{{ item.path }}"
     dest: "{{ htmlDir }}"
   loop: "{{ findCert.files }}"
+  loop_control: 
+    label: "{{ item.name }}"
