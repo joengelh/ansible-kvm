@@ -11,4 +11,6 @@
     src: "{{ item.path }}"
     dest: /etc/pki/ca-trust/source/anchors/
   loop: "{{ findCert.files }}"
+  loop_control:
+    label: "{{ item.name }}"
   notify: caReload
