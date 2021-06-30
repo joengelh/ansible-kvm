@@ -59,5 +59,6 @@
   hosts: docker
   become: yes
   roles:
+  - yum-update
   - docker-install
   - docker-compose
