@@ -10,7 +10,7 @@ docker
 nfs ansible_host=192.168.2.11
 dev7 ansible_host=192.168.2.13
 dockerVm ansible_host=192.168.2.8
-
+nginx ansible_host=192.168.2.10
 [baremetal]
 kvm ansible_host=192.168.2.15
 
