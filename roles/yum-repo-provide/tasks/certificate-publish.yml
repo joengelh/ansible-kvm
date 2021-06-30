@@ -13,4 +13,4 @@
     dest: "{{ htmlDir }}"
   loop: "{{ findCert.files }}"
   loop_control: 
-    label: "{{ item.name }}"
+    label: "{{ item.path }}"
