@@ -1,5 +1,5 @@
 [roottotal]
-rootmachine ansible_host=192.168.2.113
+rootmachine ansible_host=192.168.2.106
 
 [total:children]
 vm
@@ -8,11 +8,11 @@ docker
 
 [vm]
 nfs ansible_host=192.168.2.11
-dev7 ansible_host=192.168.2.13
-dockerVm ansible_host=192.168.2.8
-nginx ansible_host=192.168.2.10
+repository ansible_host=192.168.2.13
+
 [baremetal]
 kvm ansible_host=192.168.2.15
 
 [docker]
-dockerVm
+hvSimulator ansible_host=192.168.2.10
+dockerVm ansible_host=192.168.2.8
