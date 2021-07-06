@@ -62,3 +62,9 @@
   - yum-update
   - docker-install
   - docker-compose
+
+- name: install jupyter-notebook
+  hosts: jupyter
+  become: yes
+  roles:
+  - juypter-install

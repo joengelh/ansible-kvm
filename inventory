@@ -3,15 +3,12 @@ rootmachine ansible_host=192.168.2.106
 
 [total:children]
 vm
-baremetal
 docker
 
 [vm]
 nfs ansible_host=192.168.2.11
 repository ansible_host=192.168.2.13
-
-[baremetal]
-kvm ansible_host=192.168.2.15
+jupyter ansible_host=192.168.2.15
 
 [docker]
 hvSimulator ansible_host=192.168.2.10
